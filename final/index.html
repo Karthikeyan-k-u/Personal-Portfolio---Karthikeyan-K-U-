@@ -53,6 +53,14 @@
             font-family:'DM Sans',sans-serif; cursor:pointer; transition:all .2s;
         }
         .toggle-btn:hover { background:var(--accent); color:#fff; border-color:var(--accent); }
+        .nav-right { display:flex; align-items:center; gap:.75rem; }
+        .hamburger {
+            display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px;
+        }
+        .hamburger span { display:block; width:22px; height:2px; background:var(--text); border-radius:2px; transition:transform .3s,opacity .3s; }
+        .hamburger.active span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity:0; }
+        .hamburger.active span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
 
         /* HERO */
         #home {
@@ -176,15 +184,37 @@
         .lang-pill-lg { font-size:1.05rem; font-weight:600; padding:10px 28px; border-color:var(--accent); color:var(--accent2); letter-spacing:.02em; transition:all .25s; }
         .lang-pill-lg:hover { background:rgba(108,99,255,0.08); border-color:var(--accent2); }
 
+        /* EXPERIENCE */
+        #experience { background:var(--bg2); }
+        .exp-card { background:var(--surface); border:1px solid var(--border); border-radius:18px; padding:2rem; transition:all .3s; max-width:720px; }
+        .exp-card:hover { border-color:var(--accent); transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,.3); }
+        .exp-header { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:flex-start; gap:.5rem 1rem; margin-bottom:1.25rem; }
+        .exp-role { font-family:'Syne',sans-serif; font-size:1.15rem; font-weight:700; letter-spacing:-.02em; }
+        .exp-company { font-size:.85rem; color:var(--accent2); font-weight:500; margin-top:2px; }
+        .exp-date { font-size:.8rem; color:var(--muted); font-weight:500; padding:4px 12px; border-radius:50px; border:1px solid var(--border2); white-space:nowrap; }
+        .exp-list { list-style:none; display:flex; flex-direction:column; gap:.7rem; }
+        .exp-list li { font-size:.88rem; color:var(--muted); line-height:1.7; padding-left:1.2rem; position:relative; }
+        .exp-list li::before { content:''; position:absolute; left:0; top:.55em; width:6px; height:6px; border-radius:50%; background:var(--accent2); }
+
         /* SKILLS */
-        .skills-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.25rem; }
-        .skill-item { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:1.25rem 1.5rem; transition:all .3s; }
-        .skill-item:hover { border-color:var(--accent); transform:translateY(-2px); }
-        .skill-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:.75rem; }
-        .skill-name { font-size:.9rem; font-weight:500; }
-        .skill-pct { font-size:.8rem; font-weight:600; color:var(--accent2); }
-        .skill-bar-bg { height:5px; background:var(--bg3); border-radius:50px; overflow:hidden; }
-        .skill-bar-fill { height:100%; background:linear-gradient(90deg,var(--accent),var(--teal)); border-radius:50px; width:0; transition:width 1.2s cubic-bezier(.25,1,.5,1); }
+        .skills-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.25rem; }
+        .skill-cat-item { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:1.25rem 1.5rem; transition:all .3s; }
+        .skill-cat-item:hover { border-color:var(--accent); transform:translateY(-2px); }
+        .skill-cat-title { font-family:'Syne',sans-serif; font-size:.85rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--accent2); margin-bottom:.85rem; padding-bottom:.6rem; border-bottom:1px solid var(--border); }
+        .skill-cat-badges { display:flex; flex-wrap:wrap; gap:6px; }
+        .skill-tag { font-size:.75rem; font-weight:600; padding:4px 12px; border-radius:50px; background:var(--bg3); border:1px solid var(--border2); color:var(--text); transition:all .2s; }
+        .skill-tag:hover { background:rgba(108,99,255,.1); border-color:var(--accent); color:var(--accent2); }
+
+        /* FEATURED PROJECTS */
+        .featured-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1.5rem; margin-bottom:0; }
+        .featured-card { background:var(--surface); border:1px solid var(--border); border-radius:18px; padding:1.6rem; display:flex; flex-direction:column; gap:.8rem; transition:all .3s; position:relative; overflow:hidden; cursor:pointer; }
+        .featured-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--accent),var(--teal)); opacity:0; transition:opacity .3s; }
+        .featured-card:hover { border-color:var(--accent); transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,.3); }
+        .featured-card:hover::before { opacity:1; }
+        .feat-icon { font-size:1.8rem; line-height:1; }
+        .feat-title { font-family:'Syne',sans-serif; font-size:1rem; font-weight:700; letter-spacing:-.02em; line-height:1.3; }
+        .feat-badge { display:inline-block; font-size:.65rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:3px 10px; border-radius:50px; background:rgba(108,99,255,.12); color:var(--accent2); align-self:flex-start; }
+        .feat-desc { font-size:.845rem; color:var(--muted); line-height:1.7; flex:1; }
 
         /* PROJECTS */
         #projects { background:var(--bg2); }
@@ -192,7 +222,7 @@
         .filter-btn { background:var(--surface); border:1px solid var(--border2); color:var(--muted); border-radius:50px; padding:7px 18px; font-size:.8rem; font-weight:600; cursor:pointer; transition:all .2s; font-family:'DM Sans',sans-serif; }
         .filter-btn:hover,.filter-btn.active { background:var(--accent); color:#fff; border-color:var(--accent); }
         .projects-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:1.5rem; }
-        .project-card { background:var(--surface); border:1px solid var(--border); border-radius:18px; padding:1.6rem; display:flex; flex-direction:column; gap:.9rem; transition:all .3s; position:relative; overflow:hidden; }
+        .project-card { background:var(--surface); border:1px solid var(--border); border-radius:18px; padding:1.6rem; display:flex; flex-direction:column; gap:.9rem; transition:all .3s; position:relative; overflow:hidden; cursor:pointer; }
         .project-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--accent),var(--teal)); opacity:0; transition:opacity .3s; }
         .project-card:hover { border-color:var(--accent); transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,.3); }
         .project-card:hover::before { opacity:1; }
@@ -449,7 +479,7 @@
 
         /* CERTIFICATIONS */
         .certs-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1rem; }
-        .cert-card { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:1.1rem 1.4rem; display:flex; align-items:flex-start; gap:12px; transition:all .25s; }
+        .cert-card { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:1.1rem 1.4rem; display:flex; align-items:flex-start; gap:12px; transition:all .25s; cursor:pointer; }
         .cert-card:hover { border-color:var(--accent); }
         .cert-dot { width:8px; height:8px; border-radius:50%; background:var(--accent); flex-shrink:0; margin-top:6px; }
         .cert-issuer { font-size:.68rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--teal); margin-bottom:3px; }
@@ -503,17 +533,76 @@
         .reveal { opacity:0; transform:translateY(30px); transition:opacity .7s ease,transform .7s ease; }
         .reveal.visible { opacity:1; transform:translateY(0); }
 
+        /* Nav scroll offset */
+        section[id] { scroll-margin-top:80px; }
+
+        /* Scroll progress bar */
+        .scroll-progress { position:fixed; top:0; left:0; width:0; height:3px; background:linear-gradient(90deg,var(--accent),var(--teal)); z-index:999; transition:width .1s linear; }
+
+        /* Back to top */
+        .back-to-top { position:fixed; bottom:2rem; right:2rem; width:48px; height:48px; border-radius:50%; background:var(--surface); border:1px solid var(--border2); color:var(--text); font-size:1.2rem; cursor:pointer; display:flex; align-items:center; justify-content:center; opacity:0; transform:translateY(20px); pointer-events:none; transition:all .3s; z-index:99; backdrop-filter:blur(8px); font-family:'DM Sans',sans-serif; }
+        .back-to-top.visible { opacity:1; transform:translateY(0); pointer-events:auto; }
+        .back-to-top:hover { background:var(--accent); color:#fff; border-color:var(--accent); transform:translateY(-3px); }
+
+        /* Button micro-interaction */
+        .btn-primary:active, .btn-ghost:active, .filter-btn:active, .social-btn:active, .resume-download-btn:active, .btn-resume:active { transform:scale(0.96); }
+
+        /* Section dividers */
+        section::after { content:''; position:absolute; bottom:0; left:10%; width:80%; height:1px; background:linear-gradient(90deg,transparent,var(--border2),transparent); pointer-events:none; }
+        #home::after, #contact::after, footer::after { display:none; }
+
+        /* Cursor follower */
+        .cursor-dot { position:fixed; width:8px; height:8px; border-radius:50%; background:var(--accent); pointer-events:none; z-index:9999; transform:translate(-50%,-50%); transition:width .3s,height .3s,opacity .3s,background .3s; opacity:0; }
+        .cursor-dot.visible { opacity:1; }
+        .cursor-dot.grow { width:32px; height:32px; background:rgba(108,99,255,0.12); }
+
+        /* Typing cursor */
+        .typing-cursor { display:inline-block; width:2px; height:1.1em; background:var(--accent2); margin-left:2px; animation:blink 1s step-end infinite; vertical-align:text-bottom; }
+        @keyframes blink { 50% { opacity:0; } }
+
+        /* Floating labels */
+        .float-group { position:relative; padding-top:1.2rem; }
+        .float-group .form-label { position:absolute; left:16px; top:1.6rem; font-size:.9rem; color:var(--muted); pointer-events:none; transition:all .2s ease; background:var(--surface); padding:0 4px; }
+        .float-group .form-input:focus ~ .form-label,
+        .float-group .form-input:not(:placeholder-shown) ~ .form-label,
+        .float-group .form-textarea:focus ~ .form-label,
+        .float-group .form-textarea:not(:placeholder-shown) ~ .form-label { top:.3rem; font-size:.68rem; color:var(--accent2); }
+        .float-group .form-input,
+        .float-group .form-textarea { padding-top:1.25rem; padding-bottom:.65rem; }
+
         @media (max-width:768px) {
-            .nav-links { display:none; }
+            .hamburger { display:flex; }
+            .nav-links {
+                position:fixed; top:64px; left:0; right:0; bottom:0;
+                flex-direction:column; background:rgba(10,10,15,.97); backdrop-filter:blur(20px);
+                padding:2rem; gap:1.5rem; align-items:center; justify-content:flex-start;
+                transform:translateX(100%); transition:transform .35s cubic-bezier(.25,1,.5,1);
+                display:flex; z-index:99;
+            }
+            .light .nav-links { background:rgba(248,247,255,.97); }
+            .nav-links.open { transform:translateX(0); }
+            .nav-links a { font-size:1.1rem; }
             .edu-row { grid-template-columns:1fr; gap:1.2rem; }
             .achieve-inline { grid-template-columns:1fr; }
             .about-divider.edu-center .edu-row, .about-divider.ach-center .achieve-inline { max-width:100%; }
             .hero-profile-pic { position:relative; right:auto; top:auto; transform:none; width:150px; height:150px; margin-top:1.5rem; align-self:center; }
             .hero-stat { padding:0 .75rem; }
+            .hero-cta { flex-direction:column; align-items:stretch; }
+            .hero-cta a { justify-content:center; text-align:center; }
+            .proj-filters { justify-content:center; }
+            .filter-btn { font-size:.72rem; padding:6px 14px; }
+            .projects-grid { grid-template-columns:1fr; }
+            .certs-grid { grid-template-columns:1fr; }
+            .connect-cards { grid-template-columns:1fr; }
+            .skills-grid { grid-template-columns:1fr; }
+            section { padding:4rem 1.25rem; }
         }
     </style>
 </head>
 <body>
+
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
 
     <!-- NAV -->
     <nav>
@@ -524,10 +613,16 @@
             <li><a href="#skills">Skills</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#resume">Resume</a></li>
             <li><a href="#connect">Connect</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
-        <button class="toggle-btn" id="themeToggle">&#9728; Light</button>
+        <div class="nav-right">
+            <button class="toggle-btn" id="themeToggle">&#9728; Light</button>
+            <button class="hamburger" id="hamburgerToggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
     </nav>
 
     <!-- HERO -->
@@ -535,9 +630,9 @@
         <div class="hero-glow"></div>
         <span class="hero-tag">Open to Internships &amp; Collaborations</span>
         <h1 class="hero-name">Karthikeyan <span>K U</span></h1>
-        <img src="profile pic.jpeg" alt="Karthikeyan K U" class="hero-profile-pic" />
+        <img src="profile pic.jpeg" alt="Karthikeyan K U" class="hero-profile-pic" loading="lazy" />
         <p class="hero-tagline">
-            <em>CSE Student</em> &mdash; UI/UX Designer &mdash; Front-End Developer &mdash; Java &amp; Python Enthusiast
+            <span id="typingText"></span><span class="typing-cursor" id="typingCursor"></span>
         </p>
         <p class="hero-tagline">Bridging design thinking with engineering excellence.</p>
         
@@ -545,7 +640,7 @@
         <div class="hero-cta">
             <a href="#projects" class="btn-primary">View My Work →</a>
             <a href="mailto:KARTHUKEYAN.KU.cse29@princedrkvasudevan.com" class="btn-ghost">Contact Me</a>
-            <a href="straight resume -2.pdf" class="btn-resume" download target="_blank" rel="noopener noreferrer">
+            <a href="resume-3.pdf" class="btn-resume" download target="_blank" rel="noopener noreferrer">
                 <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
                 </svg>
@@ -632,12 +727,83 @@
         </div>
     </section>
 
+    <!-- INTERNSHIP -->
+    <section id="experience">
+        <div class="section-label">Experience</div>
+        <h2 class="section-title">Internship</h2>
+        <p class="section-sub">Real-world industry experience building production web applications.</p>
+        <div class="exp-card reveal">
+            <div class="exp-header">
+                <div>
+                    <div class="exp-role">Web Development Intern</div>
+                    <div class="exp-company">ATC Travelzone — Chennai</div>
+                </div>
+                <div class="exp-date">Jun 2026 – Present</div>
+            </div>
+            <ul class="exp-list">
+                <li>Built and debugged responsive pages for travel packages, destinations, activities, offers, reviews, and booking flows using HTML, CSS, JavaScript, and React.</li>
+                <li>Improved admin panel features including image and video uploads, live previews, status changes, category routing, and search.</li>
+                <li>Integrated front-end features with Supabase database and storage; resolved UI and data issues and deployed updates through GitHub and Cloudflare.</li>
+            </ul>
+            <div class="tech-badges" style="margin-top:.5rem">
+                <span class="badge">HTML</span>
+                <span class="badge">CSS</span>
+                <span class="badge">JavaScript</span>
+                <span class="badge">React</span>
+                <span class="badge">Supabase</span>
+                <span class="badge">Cloudflare</span>
+                <span class="badge">GitHub</span>
+            </div>
+        </div>
+    </section>
+
     <!-- SKILLS -->
     <section id="skills">
         <div class="section-label">What I work with</div>
         <h2 class="section-title">Skills</h2>
         <p class="section-sub">Technologies, tools, and disciplines I've built proficiency in through projects and coursework.</p>
         <div class="skills-grid" id="skillsGrid"></div>
+    </section>
+
+    <!-- FEATURED PROJECTS -->
+    <section id="featured">
+        <div class="section-label">Featured Work</div>
+        <h2 class="section-title">Selected Projects</h2>
+        <p class="section-sub">Key projects highlighted from my portfolio — including a Smart India Hackathon entry.</p>
+        <div class="featured-grid">
+            <div class="featured-card reveal" data-link="https://github.com/Karthikeyan-k-u">
+                <div class="feat-icon">♻️</div>
+                <div class="feat-title">Waste Collection Worker Attendance &amp; Route Register</div>
+                <div class="feat-badge">Smart India Hackathon 2026</div>
+                <p class="feat-desc">Dashboard with attendance records, route tracking, complaint management, and detailed record views for waste collection workflow. Added offline support and migrated backend to Cloudflare Workers and D1.</p>
+                <div class="tech-badges"><span class="badge">HTML</span><span class="badge">CSS</span><span class="badge">JavaScript</span><span class="badge">Cloudflare Workers</span><span class="badge">D1</span><span class="badge">IndexedDB</span></div>
+                <a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a>
+            </div>
+            <div class="featured-card reveal" data-link="https://github.com/Karthikeyan-k-u">
+                <div class="feat-icon">💉</div>
+                <div class="feat-title">Mass Blood Bank Website</div>
+                <div class="feat-badge">Personal Project</div>
+                <p class="feat-desc">Responsive multi-page website with hospital search and filtering, form validation, dropdown interactions, and persistent browser data using localStorage.</p>
+                <div class="tech-badges"><span class="badge">HTML</span><span class="badge">CSS</span><span class="badge">JavaScript</span><span class="badge">localStorage</span></div>
+                <a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a>
+            </div>
+            <div class="featured-card reveal" data-link="https://github.com/Karthikeyan-k-u">
+                <div class="feat-icon">🚌</div>
+                <div class="feat-title">College Bus Tracking Interface</div>
+                <div class="feat-badge">Personal Project</div>
+                <p class="feat-desc">Responsive interface displaying bus routes, live status, estimated arrival times, and map-oriented details built with React.</p>
+                <div class="tech-badges"><span class="badge">HTML</span><span class="badge">CSS</span><span class="badge">JavaScript</span><span class="badge">React</span></div>
+                <a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a>
+            </div>
+            <div class="featured-card reveal" data-link="https://github.com/Karthikeyan-k-u">
+                <div class="feat-icon">🌐</div>
+                <div class="feat-title">Personal Portfolio Website</div>
+                <div class="feat-badge">Personal Project</div>
+                <p class="feat-desc">Designed and deployed this portfolio site featuring project, skills, certification, and achievement sections with direct GitHub and LinkedIn links on Cloudflare Pages.</p>
+                <div class="tech-badges"><span class="badge">HTML</span><span class="badge">CSS</span><span class="badge">JavaScript</span><span class="badge">Cloudflare Pages</span></div>
+                <a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a>
+            </div>
+        </div>
     </section>
 
     <!-- PROJECTS -->
@@ -654,40 +820,40 @@
             <button class="filter-btn" data-filter="python">Python</button>
         </div>
         <div class="projects-grid" id="projectsGrid">
-            <div class="project-card reveal" data-cat="uiux"><div><span class="proj-cat-badge cat-uiux">UI/UX Design</span></div><div class="project-icon">🎨</div><div class="project-title">Personal UI/UX Design Projects</div><p class="project-desc">Designed UI layouts and application prototypes for self-learning practice. Improved understanding of UX principles, visual hierarchy, and responsive interface design techniques.</p><div class="tech-badges"><span class="badge">Figma</span><span class="badge">UX Principles</span><span class="badge">Visual Hierarchy</span><span class="badge">Responsive Design</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
-            <div class="project-card reveal" data-cat="frontend"><div><span class="proj-cat-badge cat-frontend">Front-End</span></div><div class="project-icon">💉</div><div class="project-title">Mass Blood Bank</div><p class="project-desc">My very first front-end project — a blood bank management interface built with semantic HTML, structured CSS layout, and user-friendly design.</p><div class="tech-badges"><span class="badge">HTML</span><span class="badge">CSS</span><span class="badge">JavaScript</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
-            <div class="project-card reveal" data-cat="frontend"><div><span class="proj-cat-badge cat-frontend">Front-End</span></div><div class="project-icon">🌐</div><div class="project-title">Front-End Web Capstone Project</div><p class="project-desc">A capstone project consolidating front-end skills — responsive layout, interactivity, and modern web design patterns in a single cohesive deliverable.</p><div class="tech-badges"><span class="badge">HTML</span><span class="badge">CSS</span><span class="badge">JavaScript</span><span class="badge">Responsive Design</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
-            <div class="project-card reveal" data-cat="frontend"><div><span class="proj-cat-badge cat-frontend">Front-End</span></div><div class="project-icon">📄</div><div class="project-title">HTML Basics Through Projects</div><p class="project-desc">A series of small HTML projects built while learning the fundamentals — semantic tags, forms, tables, and document structure from the ground up.</p><div class="tech-badges"><span class="badge">HTML</span><span class="badge">Semantic Tags</span><span class="badge">Forms</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
-            <div class="project-card reveal" data-cat="frontend"><div><span class="proj-cat-badge cat-frontend">Front-End</span></div><div class="project-icon">🎨</div><div class="project-title">CSS Practice Projects</div><p class="project-desc">Practice-focused CSS projects covering Flexbox, Grid, animations, transitions, pseudo-classes, and responsive design techniques.</p><div class="tech-badges"><span class="badge">CSS</span><span class="badge">Flexbox</span><span class="badge">Grid</span><span class="badge">Animations</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
-            <div class="project-card reveal" data-cat="frontend"><div><span class="proj-cat-badge cat-frontend">Front-End</span></div><div class="project-icon">⚡</div><div class="project-title">JavaScript Projects</div><p class="project-desc">Collection of JavaScript mini-projects covering DOM manipulation, event handling, local storage, and interactive UI components.</p><div class="tech-badges"><span class="badge">JavaScript</span><span class="badge">DOM</span><span class="badge">Events</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
-            <div class="project-card reveal" data-cat="java-oop"><div><span class="proj-cat-badge cat-java-oop">Java OOP</span></div><div class="project-icon">👩‍🏫</div><div class="project-title">Student–Teacher Management System</div><p class="project-desc">Console-based Java application managing student and teacher records using OOP principles — encapsulation, inheritance, and polymorphism.</p><div class="tech-badges"><span class="badge">Java</span><span class="badge">OOP</span><span class="badge">Console</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
-            <div class="project-card reveal" data-cat="java-oop"><div><span class="proj-cat-badge cat-java-oop">Java OOP</span></div><div class="project-icon">🎓</div><div class="project-title">Student Management System</div><p class="project-desc">Java OOP console application for adding, viewing, updating, and removing student records with clean class-based architecture.</p><div class="tech-badges"><span class="badge">Java</span><span class="badge">OOP</span><span class="badge">CRUD</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
-            <div class="project-card reveal" data-cat="java-oop"><div><span class="proj-cat-badge cat-java-oop">Java OOP</span></div><div class="project-icon">🏥</div><div class="project-title">Doctor–Patient Management System</div><p class="project-desc">Manages doctor and patient interactions using object-oriented design — appointments, records, and role-based access via class hierarchies.</p><div class="tech-badges"><span class="badge">Java</span><span class="badge">OOP</span><span class="badge">Inheritance</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
-            <div class="project-card reveal" data-cat="java-oop"><div><span class="proj-cat-badge cat-java-oop">Java OOP</span></div><div class="project-icon">📚</div><div class="project-title">Library Management System (Console)</div><p class="project-desc">Console-based library system for issuing, returning, and cataloguing books. Implements encapsulation and collection-based storage.</p><div class="tech-badges"><span class="badge">Java</span><span class="badge">OOP</span><span class="badge">Collections</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
-            <div class="project-card reveal" data-cat="java-oop"><div><span class="proj-cat-badge cat-java-oop">Java OOP</span></div><div class="project-icon">👔</div><div class="project-title">Employee Role Display System</div><p class="project-desc">Demonstrates polymorphism and method overriding by displaying different employee roles and their responsibilities dynamically.</p><div class="tech-badges"><span class="badge">Java</span><span class="badge">OOP</span><span class="badge">Polymorphism</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
-            <div class="project-card reveal" data-cat="java-oop"><div><span class="proj-cat-badge cat-java-oop">Java OOP</span></div><div class="project-icon">🚙</div><div class="project-title">Vehicle Evaluation System</div><p class="project-desc">Evaluates vehicle attributes using class hierarchies and abstract methods — covers cars, bikes, and trucks with type-specific evaluation logic.</p><div class="tech-badges"><span class="badge">Java</span><span class="badge">OOP</span><span class="badge">Abstract Classes</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
-            <div class="project-card reveal" data-cat="java-oop"><div><span class="proj-cat-badge cat-java-oop">Java OOP</span></div><div class="project-icon">🛵</div><div class="project-title">Bike Sales Report System</div><p class="project-desc">Generates formatted sales reports for a bike dealership using OOP — tracks models, quantities, and revenue via encapsulated objects.</p><div class="tech-badges"><span class="badge">Java</span><span class="badge">OOP</span><span class="badge">Reporting</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
-            <div class="project-card reveal" data-cat="java-oop"><div><span class="proj-cat-badge cat-java-oop">Java OOP</span></div><div class="project-icon">🍔</div><div class="project-title">Food Ordering System (OOP + Inheritance)</div><p class="project-desc">Console-based food ordering system using OOP and inheritance to model menu categories, items, and order processing workflows.</p><div class="tech-badges"><span class="badge">Java</span><span class="badge">OOP</span><span class="badge">Inheritance</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
-            <div class="project-card reveal" data-cat="java-oop"><div><span class="proj-cat-badge cat-java-oop">Java OOP</span></div><div class="project-icon">🏦</div><div class="project-title">Bank Account Management System</div><p class="project-desc">Handles bank accounts (savings, current) with deposit, withdrawal, and balance operations using Java OOP encapsulation and inheritance.</p><div class="tech-badges"><span class="badge">Java</span><span class="badge">OOP</span><span class="badge">Encapsulation</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
-            <div class="project-card reveal" data-cat="java-oop"><div><span class="proj-cat-badge cat-java-oop">Java OOP</span></div><div class="project-icon">💼</div><div class="project-title">Payroll System</div><p class="project-desc">Calculates and displays employee payroll including base salary, deductions, and net pay using OOP class structures and method overriding.</p><div class="tech-badges"><span class="badge">Java</span><span class="badge">OOP</span><span class="badge">Method Overriding</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
-            <div class="project-card reveal" data-cat="java-oop"><div><span class="proj-cat-badge cat-java-oop">Java OOP</span></div><div class="project-icon">📦</div><div class="project-title">Inventory System</div><p class="project-desc">Tracks product inventory with stock-in, stock-out, and reorder logic. Uses encapsulated Java classes to manage product data.</p><div class="tech-badges"><span class="badge">Java</span><span class="badge">OOP</span><span class="badge">Collections</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
-            <div class="project-card reveal" data-cat="java-oop"><div><span class="proj-cat-badge cat-java-oop">Java OOP</span></div><div class="project-icon">🧑‍💼</div><div class="project-title">Employee Management System</div><p class="project-desc">Full-featured console app for managing employee records — add, update, search, and delete with structured OOP design.</p><div class="tech-badges"><span class="badge">Java</span><span class="badge">OOP</span><span class="badge">CRUD</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
-            <div class="project-card reveal" data-cat="java-oop"><div><span class="proj-cat-badge cat-java-oop">Java OOP</span></div><div class="project-icon">🎬</div><div class="project-title">Movie Ticket Booking System (Console)</div><p class="project-desc">Console-based movie ticket booking with seat selection, show scheduling, and billing using Java OOP classes.</p><div class="tech-badges"><span class="badge">Java</span><span class="badge">OOP</span><span class="badge">Console</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
-            <div class="project-card reveal" data-cat="java-oop"><div><span class="proj-cat-badge cat-java-oop">Java OOP</span></div><div class="project-icon">📖</div><div class="project-title">Generic Library System</div><p class="project-desc">Uses Java Generics to build a flexible, type-safe library system that works across multiple data types and collection structures.</p><div class="tech-badges"><span class="badge">Java</span><span class="badge">Generics</span><span class="badge">OOP</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
-            <div class="project-card reveal" data-cat="swing"><div><span class="proj-cat-badge cat-swing">Java Swing</span></div><div class="project-icon">⏱</div><div class="project-title">Timed Quiz Application</div><p class="project-desc">GUI-based quiz app with countdown timer, multiple-choice questions, score tracking, and a results screen built in Java Swing.</p><div class="tech-badges"><span class="badge">Java</span><span class="badge">Swing</span><span class="badge">Timer</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
-            <div class="project-card reveal" data-cat="swing"><div><span class="proj-cat-badge cat-swing">Java Swing</span></div><div class="project-icon">🚗</div><div class="project-title">Vehicle Rental System (Factory Pattern)</div><p class="project-desc">Java Swing app implementing the Factory design pattern for vehicle rental. Clean architecture with GUI controls for booking and management.</p><div class="tech-badges"><span class="badge">Java</span><span class="badge">Swing</span><span class="badge">Factory Pattern</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
-            <div class="project-card reveal" data-cat="swing"><div><span class="proj-cat-badge cat-swing">Java Swing</span></div><div class="project-icon">🍕</div><div class="project-title">Food Delivery System (Strategy Pattern)</div><p class="project-desc">Java Swing app using the Strategy design pattern for swappable delivery algorithms. GUI-driven order flow with modular, extensible delivery logic.</p><div class="tech-badges"><span class="badge">Java</span><span class="badge">Swing</span><span class="badge">Strategy Pattern</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
-            <div class="project-card reveal" data-cat="swing"><div><span class="proj-cat-badge cat-swing">Java Swing</span></div><div class="project-icon">🏦</div><div class="project-title">Bank Management System (Swing + OOP)</div><p class="project-desc">Full GUI banking application combining Swing with OOP design. Supports account creation, deposits, withdrawals, and transaction history.</p><div class="tech-badges"><span class="badge">Java</span><span class="badge">Swing</span><span class="badge">OOP</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
-            <div class="project-card reveal" data-cat="swing"><div><span class="proj-cat-badge cat-swing">Java Swing</span></div><div class="project-icon">🎬</div><div class="project-title">Movie Ticket Booking System (GUI)</div><p class="project-desc">Swing GUI for movie ticket booking with visual seat map, showtime selection, and printable billing — a polished GUI version of the console project.</p><div class="tech-badges"><span class="badge">Java</span><span class="badge">Swing</span><span class="badge">GUI</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
-            <div class="project-card reveal" data-cat="python"><div><span class="proj-cat-badge cat-python">Python</span></div><div class="project-icon">🎲</div><div class="project-title">Dice Game (Player vs Computer)</div><p class="project-desc">Interactive terminal dice game where a player competes against the computer with score tracking and re-play options.</p><div class="tech-badges"><span class="badge">Python</span><span class="badge">Random</span><span class="badge">Game Logic</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
-            <div class="project-card reveal" data-cat="python"><div><span class="proj-cat-badge cat-python">Python</span></div><div class="project-icon">🔒</div><div class="project-title">Password Checker</div><p class="project-desc">Validates password strength based on length, character types, and common patterns — provides feedback and strength score to the user.</p><div class="tech-badges"><span class="badge">Python</span><span class="badge">Regex</span><span class="badge">Security</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
-            <div class="project-card reveal" data-cat="python"><div><span class="proj-cat-badge cat-python">Python</span></div><div class="project-icon">📋</div><div class="project-title">Student Record System (CSV-based)</div><p class="project-desc">CSV-backed student record manager for adding, viewing, searching, and deleting student data — persistent storage without a database.</p><div class="tech-badges"><span class="badge">Python</span><span class="badge">CSV</span><span class="badge">File I/O</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
-            <div class="project-card reveal" data-cat="python"><div><span class="proj-cat-badge cat-python">Python</span></div><div class="project-icon">📝</div><div class="project-title">Notes Saver System</div><p class="project-desc">Terminal app to create, view, and delete personal notes saved to local text files — a minimal personal knowledge manager.</p><div class="tech-badges"><span class="badge">Python</span><span class="badge">File I/O</span><span class="badge">CLI</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
-            <div class="project-card reveal" data-cat="python"><div><span class="proj-cat-badge cat-python">Python</span></div><div class="project-icon">📚</div><div class="project-title">Library System (Python)</div><p class="project-desc">Python-based library management for books — issue, return, search, and display available titles using structured data handling.</p><div class="tech-badges"><span class="badge">Python</span><span class="badge">OOP</span><span class="badge">Lists</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
-            <div class="project-card reveal" data-cat="python"><div><span class="proj-cat-badge cat-python">Python</span></div><div class="project-icon">✂️</div><div class="project-title">Rock Paper Scissors Game</div><p class="project-desc">Classic Rock Paper Scissors against a computer opponent with score tracking, replay, and best-of-N mode.</p><div class="tech-badges"><span class="badge">Python</span><span class="badge">Random</span><span class="badge">Game Logic</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
-            <div class="project-card reveal" data-cat="python"><div><span class="proj-cat-badge cat-python">Python</span></div><div class="project-icon">❓</div><div class="project-title">MCQ Quiz App</div><p class="project-desc">Terminal multiple-choice quiz application with configurable question sets, timer per question, and final score display.</p><div class="tech-badges"><span class="badge">Python</span><span class="badge">JSON</span><span class="badge">Logic</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
-            <div class="project-card reveal" data-cat="python"><div><span class="proj-cat-badge cat-python">Python</span></div><div class="project-icon">🔢</div><div class="project-title">Number Guessing Game</div><p class="project-desc">Guess-the-number game with difficulty levels, limited attempts, and hints (higher/lower) — a clean intro to Python game logic.</p><div class="tech-badges"><span class="badge">Python</span><span class="badge">Random</span><span class="badge">Game Logic</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
-            <div class="project-card reveal" data-cat="python"><div><span class="proj-cat-badge cat-python">Python</span></div><div class="project-icon">🏧</div><div class="project-title">ATM System</div><p class="project-desc">Simulates a full ATM workflow — PIN authentication, deposit, withdrawal, balance check, and mini-statement in a terminal environment.</p><div class="tech-badges"><span class="badge">Python</span><span class="badge">OOP</span><span class="badge">Authentication</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
+            <div class="project-card reveal" data-link="https://github.com/Karthikeyan-k-u" data-cat="uiux"><div><span class="proj-cat-badge cat-uiux">UI/UX Design</span></div><div class="project-icon">🎨</div><div class="project-title">Personal UI/UX Design Projects</div><p class="project-desc">Designed UI layouts and application prototypes for self-learning practice. Improved understanding of UX principles, visual hierarchy, and responsive interface design techniques.</p><div class="tech-badges"><span class="badge">Figma</span><span class="badge">UX Principles</span><span class="badge">Visual Hierarchy</span><span class="badge">Responsive Design</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
+            <div class="project-card reveal" data-link="https://github.com/Karthikeyan-k-u" data-cat="frontend"><div><span class="proj-cat-badge cat-frontend">Front-End</span></div><div class="project-icon">💉</div><div class="project-title">Mass Blood Bank</div><p class="project-desc">My very first front-end project — a blood bank management interface built with semantic HTML, structured CSS layout, and user-friendly design.</p><div class="tech-badges"><span class="badge">HTML</span><span class="badge">CSS</span><span class="badge">JavaScript</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
+            <div class="project-card reveal" data-link="https://github.com/Karthikeyan-k-u" data-cat="frontend"><div><span class="proj-cat-badge cat-frontend">Front-End</span></div><div class="project-icon">🌐</div><div class="project-title">Front-End Web Capstone Project</div><p class="project-desc">A capstone project consolidating front-end skills — responsive layout, interactivity, and modern web design patterns in a single cohesive deliverable.</p><div class="tech-badges"><span class="badge">HTML</span><span class="badge">CSS</span><span class="badge">JavaScript</span><span class="badge">Responsive Design</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
+            <div class="project-card reveal" data-link="https://github.com/Karthikeyan-k-u" data-cat="frontend"><div><span class="proj-cat-badge cat-frontend">Front-End</span></div><div class="project-icon">📄</div><div class="project-title">HTML Basics Through Projects</div><p class="project-desc">A series of small HTML projects built while learning the fundamentals — semantic tags, forms, tables, and document structure from the ground up.</p><div class="tech-badges"><span class="badge">HTML</span><span class="badge">Semantic Tags</span><span class="badge">Forms</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
+            <div class="project-card reveal" data-link="https://github.com/Karthikeyan-k-u" data-cat="frontend"><div><span class="proj-cat-badge cat-frontend">Front-End</span></div><div class="project-icon">🎨</div><div class="project-title">CSS Practice Projects</div><p class="project-desc">Practice-focused CSS projects covering Flexbox, Grid, animations, transitions, pseudo-classes, and responsive design techniques.</p><div class="tech-badges"><span class="badge">CSS</span><span class="badge">Flexbox</span><span class="badge">Grid</span><span class="badge">Animations</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
+            <div class="project-card reveal" data-link="https://github.com/Karthikeyan-k-u" data-cat="frontend"><div><span class="proj-cat-badge cat-frontend">Front-End</span></div><div class="project-icon">⚡</div><div class="project-title">JavaScript Projects</div><p class="project-desc">Collection of JavaScript mini-projects covering DOM manipulation, event handling, local storage, and interactive UI components.</p><div class="tech-badges"><span class="badge">JavaScript</span><span class="badge">DOM</span><span class="badge">Events</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
+            <div class="project-card reveal" data-link="https://github.com/Karthikeyan-k-u" data-cat="java-oop"><div><span class="proj-cat-badge cat-java-oop">Java OOP</span></div><div class="project-icon">👩‍🏫</div><div class="project-title">Student–Teacher Management System</div><p class="project-desc">Console-based Java application managing student and teacher records using OOP principles — encapsulation, inheritance, and polymorphism.</p><div class="tech-badges"><span class="badge">Java</span><span class="badge">OOP</span><span class="badge">Console</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
+            <div class="project-card reveal" data-link="https://github.com/Karthikeyan-k-u" data-cat="java-oop"><div><span class="proj-cat-badge cat-java-oop">Java OOP</span></div><div class="project-icon">🎓</div><div class="project-title">Student Management System</div><p class="project-desc">Java OOP console application for adding, viewing, updating, and removing student records with clean class-based architecture.</p><div class="tech-badges"><span class="badge">Java</span><span class="badge">OOP</span><span class="badge">CRUD</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
+            <div class="project-card reveal" data-link="https://github.com/Karthikeyan-k-u" data-cat="java-oop"><div><span class="proj-cat-badge cat-java-oop">Java OOP</span></div><div class="project-icon">🏥</div><div class="project-title">Doctor–Patient Management System</div><p class="project-desc">Manages doctor and patient interactions using object-oriented design — appointments, records, and role-based access via class hierarchies.</p><div class="tech-badges"><span class="badge">Java</span><span class="badge">OOP</span><span class="badge">Inheritance</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
+            <div class="project-card reveal" data-link="https://github.com/Karthikeyan-k-u" data-cat="java-oop"><div><span class="proj-cat-badge cat-java-oop">Java OOP</span></div><div class="project-icon">📚</div><div class="project-title">Library Management System (Console)</div><p class="project-desc">Console-based library system for issuing, returning, and cataloguing books. Implements encapsulation and collection-based storage.</p><div class="tech-badges"><span class="badge">Java</span><span class="badge">OOP</span><span class="badge">Collections</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
+            <div class="project-card reveal" data-link="https://github.com/Karthikeyan-k-u" data-cat="java-oop"><div><span class="proj-cat-badge cat-java-oop">Java OOP</span></div><div class="project-icon">👔</div><div class="project-title">Employee Role Display System</div><p class="project-desc">Demonstrates polymorphism and method overriding by displaying different employee roles and their responsibilities dynamically.</p><div class="tech-badges"><span class="badge">Java</span><span class="badge">OOP</span><span class="badge">Polymorphism</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
+            <div class="project-card reveal" data-link="https://github.com/Karthikeyan-k-u" data-cat="java-oop"><div><span class="proj-cat-badge cat-java-oop">Java OOP</span></div><div class="project-icon">🚙</div><div class="project-title">Vehicle Evaluation System</div><p class="project-desc">Evaluates vehicle attributes using class hierarchies and abstract methods — covers cars, bikes, and trucks with type-specific evaluation logic.</p><div class="tech-badges"><span class="badge">Java</span><span class="badge">OOP</span><span class="badge">Abstract Classes</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
+            <div class="project-card reveal" data-link="https://github.com/Karthikeyan-k-u" data-cat="java-oop"><div><span class="proj-cat-badge cat-java-oop">Java OOP</span></div><div class="project-icon">🛵</div><div class="project-title">Bike Sales Report System</div><p class="project-desc">Generates formatted sales reports for a bike dealership using OOP — tracks models, quantities, and revenue via encapsulated objects.</p><div class="tech-badges"><span class="badge">Java</span><span class="badge">OOP</span><span class="badge">Reporting</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
+            <div class="project-card reveal" data-link="https://github.com/Karthikeyan-k-u" data-cat="java-oop"><div><span class="proj-cat-badge cat-java-oop">Java OOP</span></div><div class="project-icon">🍔</div><div class="project-title">Food Ordering System (OOP + Inheritance)</div><p class="project-desc">Console-based food ordering system using OOP and inheritance to model menu categories, items, and order processing workflows.</p><div class="tech-badges"><span class="badge">Java</span><span class="badge">OOP</span><span class="badge">Inheritance</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
+            <div class="project-card reveal" data-link="https://github.com/Karthikeyan-k-u" data-cat="java-oop"><div><span class="proj-cat-badge cat-java-oop">Java OOP</span></div><div class="project-icon">🏦</div><div class="project-title">Bank Account Management System</div><p class="project-desc">Handles bank accounts (savings, current) with deposit, withdrawal, and balance operations using Java OOP encapsulation and inheritance.</p><div class="tech-badges"><span class="badge">Java</span><span class="badge">OOP</span><span class="badge">Encapsulation</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
+            <div class="project-card reveal" data-link="https://github.com/Karthikeyan-k-u" data-cat="java-oop"><div><span class="proj-cat-badge cat-java-oop">Java OOP</span></div><div class="project-icon">💼</div><div class="project-title">Payroll System</div><p class="project-desc">Calculates and displays employee payroll including base salary, deductions, and net pay using OOP class structures and method overriding.</p><div class="tech-badges"><span class="badge">Java</span><span class="badge">OOP</span><span class="badge">Method Overriding</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
+            <div class="project-card reveal" data-link="https://github.com/Karthikeyan-k-u" data-cat="java-oop"><div><span class="proj-cat-badge cat-java-oop">Java OOP</span></div><div class="project-icon">📦</div><div class="project-title">Inventory System</div><p class="project-desc">Tracks product inventory with stock-in, stock-out, and reorder logic. Uses encapsulated Java classes to manage product data.</p><div class="tech-badges"><span class="badge">Java</span><span class="badge">OOP</span><span class="badge">Collections</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
+            <div class="project-card reveal" data-link="https://github.com/Karthikeyan-k-u" data-cat="java-oop"><div><span class="proj-cat-badge cat-java-oop">Java OOP</span></div><div class="project-icon">🧑‍💼</div><div class="project-title">Employee Management System</div><p class="project-desc">Full-featured console app for managing employee records — add, update, search, and delete with structured OOP design.</p><div class="tech-badges"><span class="badge">Java</span><span class="badge">OOP</span><span class="badge">CRUD</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
+            <div class="project-card reveal" data-link="https://github.com/Karthikeyan-k-u" data-cat="java-oop"><div><span class="proj-cat-badge cat-java-oop">Java OOP</span></div><div class="project-icon">🎬</div><div class="project-title">Movie Ticket Booking System (Console)</div><p class="project-desc">Console-based movie ticket booking with seat selection, show scheduling, and billing using Java OOP classes.</p><div class="tech-badges"><span class="badge">Java</span><span class="badge">OOP</span><span class="badge">Console</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
+            <div class="project-card reveal" data-link="https://github.com/Karthikeyan-k-u" data-cat="java-oop"><div><span class="proj-cat-badge cat-java-oop">Java OOP</span></div><div class="project-icon">📖</div><div class="project-title">Generic Library System</div><p class="project-desc">Uses Java Generics to build a flexible, type-safe library system that works across multiple data types and collection structures.</p><div class="tech-badges"><span class="badge">Java</span><span class="badge">Generics</span><span class="badge">OOP</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
+            <div class="project-card reveal" data-link="https://github.com/Karthikeyan-k-u" data-cat="swing"><div><span class="proj-cat-badge cat-swing">Java Swing</span></div><div class="project-icon">⏱</div><div class="project-title">Timed Quiz Application</div><p class="project-desc">GUI-based quiz app with countdown timer, multiple-choice questions, score tracking, and a results screen built in Java Swing.</p><div class="tech-badges"><span class="badge">Java</span><span class="badge">Swing</span><span class="badge">Timer</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
+            <div class="project-card reveal" data-link="https://github.com/Karthikeyan-k-u" data-cat="swing"><div><span class="proj-cat-badge cat-swing">Java Swing</span></div><div class="project-icon">🚗</div><div class="project-title">Vehicle Rental System (Factory Pattern)</div><p class="project-desc">Java Swing app implementing the Factory design pattern for vehicle rental. Clean architecture with GUI controls for booking and management.</p><div class="tech-badges"><span class="badge">Java</span><span class="badge">Swing</span><span class="badge">Factory Pattern</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
+            <div class="project-card reveal" data-link="https://github.com/Karthikeyan-k-u" data-cat="swing"><div><span class="proj-cat-badge cat-swing">Java Swing</span></div><div class="project-icon">🍕</div><div class="project-title">Food Delivery System (Strategy Pattern)</div><p class="project-desc">Java Swing app using the Strategy design pattern for swappable delivery algorithms. GUI-driven order flow with modular, extensible delivery logic.</p><div class="tech-badges"><span class="badge">Java</span><span class="badge">Swing</span><span class="badge">Strategy Pattern</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
+            <div class="project-card reveal" data-link="https://github.com/Karthikeyan-k-u" data-cat="swing"><div><span class="proj-cat-badge cat-swing">Java Swing</span></div><div class="project-icon">🏦</div><div class="project-title">Bank Management System (Swing + OOP)</div><p class="project-desc">Full GUI banking application combining Swing with OOP design. Supports account creation, deposits, withdrawals, and transaction history.</p><div class="tech-badges"><span class="badge">Java</span><span class="badge">Swing</span><span class="badge">OOP</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
+            <div class="project-card reveal" data-link="https://github.com/Karthikeyan-k-u" data-cat="swing"><div><span class="proj-cat-badge cat-swing">Java Swing</span></div><div class="project-icon">🎬</div><div class="project-title">Movie Ticket Booking System (GUI)</div><p class="project-desc">Swing GUI for movie ticket booking with visual seat map, showtime selection, and printable billing — a polished GUI version of the console project.</p><div class="tech-badges"><span class="badge">Java</span><span class="badge">Swing</span><span class="badge">GUI</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
+            <div class="project-card reveal" data-link="https://github.com/Karthikeyan-k-u" data-cat="python"><div><span class="proj-cat-badge cat-python">Python</span></div><div class="project-icon">🎲</div><div class="project-title">Dice Game (Player vs Computer)</div><p class="project-desc">Interactive terminal dice game where a player competes against the computer with score tracking and re-play options.</p><div class="tech-badges"><span class="badge">Python</span><span class="badge">Random</span><span class="badge">Game Logic</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
+            <div class="project-card reveal" data-link="https://github.com/Karthikeyan-k-u" data-cat="python"><div><span class="proj-cat-badge cat-python">Python</span></div><div class="project-icon">🔒</div><div class="project-title">Password Checker</div><p class="project-desc">Validates password strength based on length, character types, and common patterns — provides feedback and strength score to the user.</p><div class="tech-badges"><span class="badge">Python</span><span class="badge">Regex</span><span class="badge">Security</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
+            <div class="project-card reveal" data-link="https://github.com/Karthikeyan-k-u" data-cat="python"><div><span class="proj-cat-badge cat-python">Python</span></div><div class="project-icon">📋</div><div class="project-title">Student Record System (CSV-based)</div><p class="project-desc">CSV-backed student record manager for adding, viewing, searching, and deleting student data — persistent storage without a database.</p><div class="tech-badges"><span class="badge">Python</span><span class="badge">CSV</span><span class="badge">File I/O</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
+            <div class="project-card reveal" data-link="https://github.com/Karthikeyan-k-u" data-cat="python"><div><span class="proj-cat-badge cat-python">Python</span></div><div class="project-icon">📝</div><div class="project-title">Notes Saver System</div><p class="project-desc">Terminal app to create, view, and delete personal notes saved to local text files — a minimal personal knowledge manager.</p><div class="tech-badges"><span class="badge">Python</span><span class="badge">File I/O</span><span class="badge">CLI</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
+            <div class="project-card reveal" data-link="https://github.com/Karthikeyan-k-u" data-cat="python"><div><span class="proj-cat-badge cat-python">Python</span></div><div class="project-icon">📚</div><div class="project-title">Library System (Python)</div><p class="project-desc">Python-based library management for books — issue, return, search, and display available titles using structured data handling.</p><div class="tech-badges"><span class="badge">Python</span><span class="badge">OOP</span><span class="badge">Lists</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
+            <div class="project-card reveal" data-link="https://github.com/Karthikeyan-k-u" data-cat="python"><div><span class="proj-cat-badge cat-python">Python</span></div><div class="project-icon">✂️</div><div class="project-title">Rock Paper Scissors Game</div><p class="project-desc">Classic Rock Paper Scissors against a computer opponent with score tracking, replay, and best-of-N mode.</p><div class="tech-badges"><span class="badge">Python</span><span class="badge">Random</span><span class="badge">Game Logic</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
+            <div class="project-card reveal" data-link="https://github.com/Karthikeyan-k-u" data-cat="python"><div><span class="proj-cat-badge cat-python">Python</span></div><div class="project-icon">❓</div><div class="project-title">MCQ Quiz App</div><p class="project-desc">Terminal multiple-choice quiz application with configurable question sets, timer per question, and final score display.</p><div class="tech-badges"><span class="badge">Python</span><span class="badge">JSON</span><span class="badge">Logic</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
+            <div class="project-card reveal" data-link="https://github.com/Karthikeyan-k-u" data-cat="python"><div><span class="proj-cat-badge cat-python">Python</span></div><div class="project-icon">🔢</div><div class="project-title">Number Guessing Game</div><p class="project-desc">Guess-the-number game with difficulty levels, limited attempts, and hints (higher/lower) — a clean intro to Python game logic.</p><div class="tech-badges"><span class="badge">Python</span><span class="badge">Random</span><span class="badge">Game Logic</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
+            <div class="project-card reveal" data-link="https://github.com/Karthikeyan-k-u" data-cat="python"><div><span class="proj-cat-badge cat-python">Python</span></div><div class="project-icon">🏧</div><div class="project-title">ATM System</div><p class="project-desc">Simulates a full ATM workflow — PIN authentication, deposit, withdrawal, balance check, and mini-statement in a terminal environment.</p><div class="tech-badges"><span class="badge">Python</span><span class="badge">OOP</span><span class="badge">Authentication</span></div><a href="https://github.com/Karthikeyan-k-u" target="_blank" class="view-btn">View on GitHub →</a></div>
         </div>
         <br>
         <p class="section-sub">Explore more projects and code samples on my GitHub profile.</p>
@@ -708,37 +874,66 @@
             </div>
         </div>
         <div class="certs-grid" id="certsGrid">
-            <div class="cert-card reveal" data-issuer="Anthropic" data-name="AI Fluency: Capabilities &amp; Limitations"><div class="cert-dot"></div><div><div class="cert-issuer">Anthropic</div><div class="cert-name">AI Fluency: Capabilities &amp; Limitations</div></div></div>
-            <div class="cert-card reveal" data-issuer="Anthropic" data-name="AI Fluency for Educators"><div class="cert-dot"></div><div><div class="cert-issuer">Anthropic</div><div class="cert-name">AI Fluency for Educators</div></div></div>
-            <div class="cert-card reveal" data-issuer="Anthropic" data-name="AI Fluency for Nonprofits"><div class="cert-dot"></div><div><div class="cert-issuer">Anthropic</div><div class="cert-name">AI Fluency for Nonprofits</div></div></div>
-            <div class="cert-card reveal" data-issuer="Anthropic" data-name="AI Fluency for Students"><div class="cert-dot"></div><div><div class="cert-issuer">Anthropic</div><div class="cert-name">AI Fluency for Students</div></div></div>
-            <div class="cert-card reveal" data-issuer="Anthropic" data-name="Framework &amp; Foundations"><div class="cert-dot"></div><div><div class="cert-issuer">Anthropic</div><div class="cert-name">Framework &amp; Foundations</div></div></div>
-            <div class="cert-card reveal" data-issuer="Anthropic" data-name="Claude API"><div class="cert-dot"></div><div><div class="cert-issuer">Anthropic</div><div class="cert-name">Claude API</div></div></div>
-            <div class="cert-card reveal" data-issuer="Anthropic" data-name="Claude 101"><div class="cert-dot"></div><div><div class="cert-issuer">Anthropic</div><div class="cert-name">Claude 101</div></div></div>
-            <div class="cert-card reveal" data-issuer="Anthropic" data-name="Claude Code 101"><div class="cert-dot"></div><div><div class="cert-issuer">Anthropic</div><div class="cert-name">Claude Code 101</div></div></div>
-            <div class="cert-card reveal" data-issuer="Anthropic" data-name="Code in Action"><div class="cert-dot"></div><div><div class="cert-issuer">Anthropic</div><div class="cert-name">Code in Action</div></div></div>
-            <div class="cert-card reveal" data-issuer="Anthropic" data-name="Amazon Bedrock Integration"><div class="cert-dot"></div><div><div class="cert-issuer">Anthropic</div><div class="cert-name">Amazon Bedrock Integration</div></div></div>
-            <div class="cert-card reveal" data-issuer="Anthropic" data-name="Google Vertex AI Integration"><div class="cert-dot"></div><div><div class="cert-issuer">Anthropic</div><div class="cert-name">Google Vertex AI Integration</div></div></div>
-            <div class="cert-card reveal" data-issuer="Anthropic" data-name="Agent Skills"><div class="cert-dot"></div><div><div class="cert-issuer">Anthropic</div><div class="cert-name">Agent Skills</div></div></div>
-            <div class="cert-card reveal" data-issuer="Anthropic" data-name="MCP Fundamentals"><div class="cert-dot"></div><div><div class="cert-issuer">Anthropic</div><div class="cert-name">MCP Fundamentals</div></div></div>
-            <div class="cert-card reveal" data-issuer="Anthropic" data-name="Subagents"><div class="cert-dot"></div><div><div class="cert-issuer">Anthropic</div><div class="cert-name">Subagents</div></div></div>
-            <div class="cert-card reveal" data-issuer="Anthropic" data-name="Teaching AI Fluency"><div class="cert-dot"></div><div><div class="cert-issuer">Anthropic</div><div class="cert-name">Teaching AI Fluency</div></div></div>
-            <div class="cert-card reveal" data-issuer="Infosys" data-name="Fundamentals of Java"><div class="cert-dot"></div><div><div class="cert-issuer">Infosys</div><div class="cert-name">Fundamentals of Java</div></div></div>
-            <div class="cert-card reveal" data-issuer="Scaler Topics" data-name="Java Fundamentals"><div class="cert-dot"></div><div><div class="cert-issuer">Scaler Topics</div><div class="cert-name">Java Fundamentals</div></div></div>
-            <div class="cert-card reveal" data-issuer="Infosys" data-name="Python Fundamentals"><div class="cert-dot"></div><div><div class="cert-issuer">Infosys</div><div class="cert-name">Python Fundamentals</div></div></div>
-            <div class="cert-card reveal" data-issuer="Scaler Topics" data-name="JavaScript Fundamentals"><div class="cert-dot"></div><div><div class="cert-issuer">Scaler Topics</div><div class="cert-name">JavaScript Fundamentals</div></div></div>
-            <div class="cert-card reveal" data-issuer="freeCodeCamp" data-name="Responsive Web Design (V8)"><div class="cert-dot"></div><div><div class="cert-issuer">freeCodeCamp</div><div class="cert-name">Responsive Web Design (V8)</div></div></div>
-            <div class="cert-card reveal" data-issuer="NPTEL" data-name="Fundamentals of Object-Oriented Programming (Elite &amp; Sliver - 78%)"><div class="cert-dot"></div><div><div class="cert-issuer">NPTEL</div><div class="cert-name">Fundamentals of Object-Oriented Programming (Elite &amp; Sliver - 78%)</div></div></div>
-            <div class="cert-card reveal" data-issuer="Microsoft" data-name="Azure Storage Security Applied Skills"><div class="cert-dot"></div><div><div class="cert-issuer">Microsoft</div><div class="cert-name">Azure Storage Security Applied Skills</div></div></div>
-            <div class="cert-card reveal" data-issuer="Accenture" data-name="Digital Skills: User Experience"><div class="cert-dot"></div><div><div class="cert-issuer">Accenture</div><div class="cert-name">Digital Skills: User Experience</div></div></div>
-            <div class="cert-card reveal" data-issuer="LPB02" data-name="Automation with Arduino — Excellent Performance"><div class="cert-dot"></div><div><div class="cert-issuer">LPB02</div><div class="cert-name">Automation with Arduino — Excellent Performance</div></div></div>
-            <div class="cert-card reveal" data-issuer="B10X" data-name="AI Tools &amp; Workshop"><div class="cert-dot"></div><div><div class="cert-issuer">B10X</div><div class="cert-name">AI Tools &amp; Workshop</div></div></div>
+            <div class="cert-card reveal" data-link="https://linkedin.com/in/karthikeyan-k-u-689858386" data-issuer="Anthropic" data-name="AI Fluency: Capabilities &amp; Limitations"><div class="cert-dot"></div><div><div class="cert-issuer">Anthropic</div><div class="cert-name">AI Fluency: Capabilities &amp; Limitations</div></div></div>
+            <div class="cert-card reveal" data-link="https://linkedin.com/in/karthikeyan-k-u-689858386" data-issuer="Anthropic" data-name="AI Fluency for Educators"><div class="cert-dot"></div><div><div class="cert-issuer">Anthropic</div><div class="cert-name">AI Fluency for Educators</div></div></div>
+            <div class="cert-card reveal" data-link="https://linkedin.com/in/karthikeyan-k-u-689858386" data-issuer="Anthropic" data-name="AI Fluency for Nonprofits"><div class="cert-dot"></div><div><div class="cert-issuer">Anthropic</div><div class="cert-name">AI Fluency for Nonprofits</div></div></div>
+            <div class="cert-card reveal" data-link="https://linkedin.com/in/karthikeyan-k-u-689858386" data-issuer="Anthropic" data-name="AI Fluency for Students"><div class="cert-dot"></div><div><div class="cert-issuer">Anthropic</div><div class="cert-name">AI Fluency for Students</div></div></div>
+            <div class="cert-card reveal" data-link="https://linkedin.com/in/karthikeyan-k-u-689858386" data-issuer="Anthropic" data-name="Framework &amp; Foundations"><div class="cert-dot"></div><div><div class="cert-issuer">Anthropic</div><div class="cert-name">Framework &amp; Foundations</div></div></div>
+            <div class="cert-card reveal" data-link="https://linkedin.com/in/karthikeyan-k-u-689858386" data-issuer="Anthropic" data-name="Claude API"><div class="cert-dot"></div><div><div class="cert-issuer">Anthropic</div><div class="cert-name">Claude API</div></div></div>
+            <div class="cert-card reveal" data-link="https://linkedin.com/in/karthikeyan-k-u-689858386" data-issuer="Anthropic" data-name="Claude 101"><div class="cert-dot"></div><div><div class="cert-issuer">Anthropic</div><div class="cert-name">Claude 101</div></div></div>
+            <div class="cert-card reveal" data-link="https://linkedin.com/in/karthikeyan-k-u-689858386" data-issuer="Anthropic" data-name="Claude Code 101"><div class="cert-dot"></div><div><div class="cert-issuer">Anthropic</div><div class="cert-name">Claude Code 101</div></div></div>
+            <div class="cert-card reveal" data-link="https://linkedin.com/in/karthikeyan-k-u-689858386" data-issuer="Anthropic" data-name="Code in Action"><div class="cert-dot"></div><div><div class="cert-issuer">Anthropic</div><div class="cert-name">Code in Action</div></div></div>
+            <div class="cert-card reveal" data-link="https://linkedin.com/in/karthikeyan-k-u-689858386" data-issuer="Anthropic" data-name="Amazon Bedrock Integration"><div class="cert-dot"></div><div><div class="cert-issuer">Anthropic</div><div class="cert-name">Amazon Bedrock Integration</div></div></div>
+            <div class="cert-card reveal" data-link="https://linkedin.com/in/karthikeyan-k-u-689858386" data-issuer="Anthropic" data-name="Google Vertex AI Integration"><div class="cert-dot"></div><div><div class="cert-issuer">Anthropic</div><div class="cert-name">Google Vertex AI Integration</div></div></div>
+            <div class="cert-card reveal" data-link="https://linkedin.com/in/karthikeyan-k-u-689858386" data-issuer="Anthropic" data-name="Agent Skills"><div class="cert-dot"></div><div><div class="cert-issuer">Anthropic</div><div class="cert-name">Agent Skills</div></div></div>
+            <div class="cert-card reveal" data-link="https://linkedin.com/in/karthikeyan-k-u-689858386" data-issuer="Anthropic" data-name="MCP Fundamentals"><div class="cert-dot"></div><div><div class="cert-issuer">Anthropic</div><div class="cert-name">MCP Fundamentals</div></div></div>
+            <div class="cert-card reveal" data-link="https://linkedin.com/in/karthikeyan-k-u-689858386" data-issuer="Anthropic" data-name="Subagents"><div class="cert-dot"></div><div><div class="cert-issuer">Anthropic</div><div class="cert-name">Subagents</div></div></div>
+            <div class="cert-card reveal" data-link="https://linkedin.com/in/karthikeyan-k-u-689858386" data-issuer="Anthropic" data-name="Teaching AI Fluency"><div class="cert-dot"></div><div><div class="cert-issuer">Anthropic</div><div class="cert-name">Teaching AI Fluency</div></div></div>
+            <div class="cert-card reveal" data-link="https://linkedin.com/in/karthikeyan-k-u-689858386" data-issuer="Infosys" data-name="Fundamentals of Java"><div class="cert-dot"></div><div><div class="cert-issuer">Infosys</div><div class="cert-name">Fundamentals of Java</div></div></div>
+            <div class="cert-card reveal" data-link="https://linkedin.com/in/karthikeyan-k-u-689858386" data-issuer="Scaler Topics" data-name="Java Fundamentals"><div class="cert-dot"></div><div><div class="cert-issuer">Scaler Topics</div><div class="cert-name">Java Fundamentals</div></div></div>
+            <div class="cert-card reveal" data-link="https://linkedin.com/in/karthikeyan-k-u-689858386" data-issuer="Infosys" data-name="Python Fundamentals"><div class="cert-dot"></div><div><div class="cert-issuer">Infosys</div><div class="cert-name">Python Fundamentals</div></div></div>
+            <div class="cert-card reveal" data-link="https://linkedin.com/in/karthikeyan-k-u-689858386" data-issuer="Scaler Topics" data-name="JavaScript Fundamentals"><div class="cert-dot"></div><div><div class="cert-issuer">Scaler Topics</div><div class="cert-name">JavaScript Fundamentals</div></div></div>
+            <div class="cert-card reveal" data-link="https://linkedin.com/in/karthikeyan-k-u-689858386" data-issuer="freeCodeCamp" data-name="Responsive Web Design (V8)"><div class="cert-dot"></div><div><div class="cert-issuer">freeCodeCamp</div><div class="cert-name">Responsive Web Design (V8)</div></div></div>
+            <div class="cert-card reveal" data-link="https://linkedin.com/in/karthikeyan-k-u-689858386" data-issuer="NPTEL" data-name="Fundamentals of Object-Oriented Programming (Elite &amp; Sliver - 78%)"><div class="cert-dot"></div><div><div class="cert-issuer">NPTEL</div><div class="cert-name">Fundamentals of Object-Oriented Programming (Elite &amp; Sliver - 78%)</div></div></div>
+            <div class="cert-card reveal" data-link="https://linkedin.com/in/karthikeyan-k-u-689858386" data-issuer="Microsoft" data-name="Azure Storage Security Applied Skills"><div class="cert-dot"></div><div><div class="cert-issuer">Microsoft</div><div class="cert-name">Azure Storage Security Applied Skills</div></div></div>
+            <div class="cert-card reveal" data-link="https://linkedin.com/in/karthikeyan-k-u-689858386" data-issuer="Accenture" data-name="Digital Skills: User Experience"><div class="cert-dot"></div><div><div class="cert-issuer">Accenture</div><div class="cert-name">Digital Skills: User Experience</div></div></div>
+            <div class="cert-card reveal" data-link="https://linkedin.com/in/karthikeyan-k-u-689858386" data-issuer="LPB02" data-name="Automation with Arduino — Excellent Performance"><div class="cert-dot"></div><div><div class="cert-issuer">LPB02</div><div class="cert-name">Automation with Arduino — Excellent Performance</div></div></div>
+            <div class="cert-card reveal" data-link="https://linkedin.com/in/karthikeyan-k-u-689858386" data-issuer="B10X" data-name="AI Tools &amp; Workshop"><div class="cert-dot"></div><div><div class="cert-issuer">B10X</div><div class="cert-name">AI Tools &amp; Workshop</div></div></div>
         </div>
         <p class="certs-no-results" id="certsNoResults">No certifications match your search. Try a different keyword.</p>
         <br>
         <p class="certs-link">Can view all certifications here</p>
         <div class="social-buttons">
             <a href="https://linkedin.com/in/karthikeyan-k-u-689858386" target="_blank" rel="noopener noreferrer" class="social-btn linkedin-btn">LinkedIn →</a>
+        </div>
+    </section>
+
+    <!-- RESUME DOWNLOAD SECTION -->
+    <section id="resume">
+    <div class="section-label">My Resume</div>
+    <h2 class="section-title">Download Resume</h2>
+    <p class="section-sub">Get a copy of my latest resume to learn more about my skills, education, and experience.</p>
+        <div class="resume-container">
+            <div class="resume-preview reveal">
+                <div class="resume-icon">📄</div>
+                <div class="resume-title">Karthikeyan K U — Resume</div>
+                <div class="resume-meta">PDF • Updated 2026</div>
+                <a 
+                    href="resume-3.pdf" 
+                    class="resume-download-btn" 
+                    download
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                    </svg>
+                    Download Resume
+                </a>
+                <p class="resume-alternate">
+                    Or <a href="https://drive.google.com/file/d/1wvhVvcg3rEkinZIYlaMVEPeCRGVyYpnT/view?usp=drive_link" target="_blank" rel="noopener noreferrer">view in browser</a>
+                </p>
+            </div>
         </div>
     </section>
 
@@ -776,53 +971,24 @@
             <h2 class="section-title">Contact</h2>
             <p class="section-sub">Have a project, internship opportunity, or just want to say hi? Drop a message below.</p>
             <form class="contact-form" id="contactForm" novalidate>
-                <div class="form-group">
+                <div class="form-group float-group">
+                    <input class="form-input" type="text" id="nameField" placeholder=" " />
                     <label class="form-label" for="nameField">Name</label>
-                    <input class="form-input" type="text" id="nameField" placeholder="Your name" />
                     <span class="form-error" id="nameError"></span>
                 </div>
-                <div class="form-group">
+                <div class="form-group float-group">
+                    <input class="form-input" type="email" id="emailField" placeholder=" " />
                     <label class="form-label" for="emailField">Email</label>
-                    <input class="form-input" type="email" id="emailField" placeholder="your@email.com" />
                     <span class="form-error" id="emailError"></span>
                 </div>
-                <div class="form-group">
+                <div class="form-group float-group">
+                    <textarea class="form-textarea" id="msgField" placeholder=" " rows="4"></textarea>
                     <label class="form-label" for="msgField">Message</label>
-                    <textarea class="form-textarea" id="msgField" placeholder="What's on your mind?"></textarea>
                     <span class="form-error" id="msgError"></span>
                 </div>
                 <button type="submit" class="btn-primary" style="align-self:flex-start;">Send Message →</button>
                 <div class="form-success" id="formSuccess">✓ Message sent! I'll get back to you soon.</div>
             </form>
-        </div>
-    </section>
-
-    <!-- RESUME DOWNLOAD SECTION -->
-    <section id="resume">
-    <div class="section-label">My Resume</div>
-    <h2 class="section-title">Download Resume</h2>
-    <p class="section-sub">Get a copy of my latest resume to learn more about my skills, education, and experience.</p>
-        <div class="resume-container">
-            <div class="resume-preview reveal">
-                <div class="resume-icon">📄</div>
-                <div class="resume-title">Karthikeyan K U — Resume</div>
-                <div class="resume-meta">PDF • Updated 2026</div>
-                <a 
-                    href="straight resume -2.pdf" 
-                    class="resume-download-btn" 
-                    download
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
-                    </svg>
-                    Download Resume
-                </a>
-                <p class="resume-alternate">
-                    Or <a href="https://drive.google.com/file/d/1wvhVvcg3rEkinZIYlaMVEPeCRGVyYpnT/view?usp=drive_link" target="_blank" rel="noopener noreferrer">view in browser</a>
-                </p>
-            </div>
         </div>
     </section>
 
@@ -845,6 +1011,8 @@
         </div>
     </footer>
 
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
     <script >
          /* Theme Toggle */
         const themeBtn = document.getElementById('themeToggle');
@@ -855,34 +1023,136 @@
             themeBtn.textContent = isLight ? '🌙 Dark' : '☀ Light';
         });
 
-        /* Skills */
-        const skills = [
-            { name: 'Java & OOP', pct: 85 }, { name: 'Front-End Development', pct: 80 },
-            { name: 'HTML & CSS', pct: 90 }, { name: 'JavaScript', pct: 75 },
-            { name: 'Python', pct: 78 }, { name: 'UI/UX Design', pct: 72 },
-            { name: 'Responsive Design', pct: 82 }, { name: 'Java Swing (GUI)', pct: 70 },
-            { name: 'Problem Solving', pct: 88 }, { name: 'AI Tools', pct: 85 },
+        /* Skills — Categorized */
+        const skillCats = [
+            { cat: 'Programming Languages', items: ['Java', 'Python', 'JavaScript', 'SQL'] },
+            { cat: 'Front-End', items: ['HTML5', 'CSS3', 'React', 'Responsive Web Design', 'DOM Manipulation', 'localStorage'] },
+            { cat: 'Databases & Cloud', items: ['Supabase', 'MySQL', 'SQLite', 'IndexedDB', 'Cloudflare Workers', 'Cloudflare D1'] },
+            { cat: 'Tools & Platforms', items: ['Git', 'GitHub', 'VS Code', 'Node.js', 'Vite', 'Wrangler', 'Figma'] },
+            { cat: 'Core Knowledge', items: ['OOP', 'DBMS', 'Data Structures', 'Debugging', 'Problem Solving', 'UI/UX Design'] },
         ];
         const skillsGrid = document.getElementById('skillsGrid');
-        skills.forEach((s, i) => {
+        skillCats.forEach((c, i) => {
             const el = document.createElement('div');
-            el.className = 'skill-item reveal';
-            el.style.transitionDelay = (i * 0.055) + 's';
-            el.innerHTML = `<div class="skill-header"><span class="skill-name">${s.name}</span><span class="skill-pct">${s.pct}%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-pct="${s.pct}"></div></div>`;
+            el.className = 'skill-cat-item reveal';
+            el.style.transitionDelay = (i * 0.08) + 's';
+            el.innerHTML = `<div class="skill-cat-title">${c.cat}</div><div class="skill-cat-badges">${c.items.map(s => `<span class="skill-tag">${s}</span>`).join('')}</div>`;
             skillsGrid.appendChild(el);
         });
 
-        /* Scroll Reveal */
+        /* Scroll Reveal — Staggered */
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    entry.target.querySelectorAll('.skill-bar-fill').forEach(b => { b.style.width = b.dataset.pct + '%'; });
                     observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        /* Hero Typing Animation */
+        (function () {
+            const roles = ['CSE Student', 'UI/UX Designer', 'Front-End Developer', 'Java & Python Enthusiast'];
+            const el = document.getElementById('typingText');
+            if (!el) return;
+            let roleIndex = 0, charIndex = 0, isDeleting = false;
+            function type() {
+                const current = roles[roleIndex];
+                if (isDeleting) {
+                    el.textContent = current.substring(0, charIndex--);
+                    if (charIndex < 0) { isDeleting = false; roleIndex = (roleIndex + 1) % roles.length; setTimeout(type, 400); return; }
+                    setTimeout(type, 30);
+                } else {
+                    el.textContent = current.substring(0, charIndex++);
+                    if (charIndex > current.length) { isDeleting = true; setTimeout(type, 1800); return; }
+                    setTimeout(type, 60);
+                }
+            }
+            type();
+        })();
+
+        /* Counter Animation for Stats */
+        (function () {
+            const stats = document.querySelectorAll('.stat-num');
+            if (!stats.length) return;
+            const statObserver = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    const el = entry.target;
+                    const text = el.textContent;
+                    const num = parseInt(text);
+                    const suffix = text.replace(/[\d]/g, '');
+                    if (isNaN(num)) return;
+                    let current = 0;
+                    const step = Math.ceil(num / 40);
+                    const timer = setInterval(() => {
+                        current += step;
+                        if (current >= num) { current = num; clearInterval(timer); }
+                        el.textContent = current + suffix;
+                    }, 30);
+                    statObserver.unobserve(el);
+                });
+            }, { threshold: 0.5 });
+            stats.forEach(s => statObserver.observe(s));
+        })();
+
+        /* 3D Card Tilt Effect */
+        (function () {
+            const cards = document.querySelectorAll('.project-card, .cert-card');
+            cards.forEach(card => {
+                card.addEventListener('mousemove', e => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left, y = e.clientY - rect.top;
+                    const cx = rect.width / 2, cy = rect.height / 2;
+                    const rotX = (y - cy) / cy * -6, rotY = (x - cx) / cx * 6;
+                    card.style.transform = `perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-4px)`;
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(800px) rotateX(0) rotateY(0) translateY(0)';
+                });
+            });
+        })();
+
+        /* Scroll Progress Bar */
+        const progressBar = document.getElementById('scrollProgress');
+        if (progressBar) {
+            window.addEventListener('scroll', () => {
+                const scrollTop = window.scrollY;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                progressBar.style.width = (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + '%';
+            });
+        }
+
+        /* Back to Top */
+        const backBtn = document.getElementById('backToTop');
+        if (backBtn) {
+            window.addEventListener('scroll', () => {
+                backBtn.classList.toggle('visible', window.scrollY > window.innerHeight * 0.6);
+            });
+            backBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        /* Cursor Follower */
+        (function () {
+            const dot = document.getElementById('cursorDot');
+            if (!dot || window.innerWidth < 768) return;
+            let mx = 0, my = 0;
+            document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; dot.classList.add('visible'); });
+            function tick() {
+                const x = parseFloat(dot.style.left) || 0, y = parseFloat(dot.style.top) || 0;
+                dot.style.left = (x + (mx - x) * 0.15) + 'px';
+                dot.style.top = (y + (my - y) * 0.15) + 'px';
+                requestAnimationFrame(tick);
+            }
+            tick();
+            document.querySelectorAll('a, button, .project-card, .cert-card').forEach(el => {
+                el.addEventListener('mouseenter', () => dot.classList.add('grow'));
+                el.addEventListener('mouseleave', () => dot.classList.remove('grow'));
+            });
+        })();
 
         /* Project Filter */
         document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -946,6 +1216,46 @@
                 }
             });
         })();
+
+        /* Hamburger Menu Toggle */
+        const hamburger = document.getElementById('hamburgerToggle');
+        const navLinks = document.querySelector('.nav-links');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('open');
+        });
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('open');
+            });
+        });
+
+        /* Project Card Click — navigate to data-link, ignore clicks on .view-btn */
+        document.querySelectorAll('#projectsGrid .project-card').forEach(card => {
+            card.addEventListener('click', e => {
+                if (e.target.closest('.view-btn')) return;
+                const link = card.getAttribute('data-link');
+                if (link) window.open(link, '_blank');
+            });
+        });
+
+        /* Featured Card Click */
+        document.querySelectorAll('#featured .featured-card').forEach(card => {
+            card.addEventListener('click', e => {
+                if (e.target.closest('.view-btn')) return;
+                const link = card.getAttribute('data-link');
+                if (link) window.open(link, '_blank');
+            });
+        });
+
+        /* Certificate Card Click — navigate to data-link */
+        document.querySelectorAll('#certsGrid .cert-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const link = card.getAttribute('data-link');
+                if (link) window.open(link, '_blank');
+            });
+        });
     </script>
 </body>
 </html>
