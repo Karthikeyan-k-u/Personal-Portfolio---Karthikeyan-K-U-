@@ -2,53 +2,52 @@
 
 A modern and responsive personal portfolio website showcasing my skills, projects, certifications, achievements, and experience as a Frontend Developer and UI/UX Designer.
 
+🔗 **Live Demo:** https://personal-portfolio---karthikeyan-k-u.pages.dev
+
 ## 🚀 Features
 
-- Responsive modern UI
-- Smooth animations and transitions
-- Project showcase section
-- Skills and certifications section
-- Contact and social media links
-- Clean and professional design
-- Mobile-friendly layout
+- Responsive modern UI with dark/light theme toggle
+- Smooth scroll animations and transitions
+- Typing animation hero section
+- Project showcase with category filtering (Front-End, Java OOP, Java Swing, Python, UI/UX)
+- Featured projects section
+- Searchable certifications grid
+- Education timeline and achievements
+- Internship experience section
+- Resume view/download
+- Contact form with client-side validation
+- Mobile-friendly hamburger menu
+- Scroll progress bar and back-to-top button
+- Custom cursor follower
 
 ## 🛠️ Built With
 
 - HTML5
 - CSS3
 - JavaScript
-- Responsive Web Design
+- React
+- Cloudflare Pages
+- Supabase
+- Git & GitHub
 
 ## 📂 Sections Included
 
 - Home
-- About
+- About (Education, Achievements, Languages)
 - Skills
-- Projects
-- Certifications
-- Achievements
+- Internship (Experience)
+- Featured Projects
+- Projects (Filterable)
+- Certifications (Searchable)
+- Resume
+- Connect (GitHub & LinkedIn)
 - Contact
+- Footer
 
 ## 🔗 Social Links
 
-- LinkedIn: 
-  https://linkedin.com/in/karthikeyan-k-u-689858386
-
-- GitHub:
-  https://github.com/Karthikeyan-k-u
-
-## 📸 Preview
-
-This portfolio represents my journey, technical skills, creativity, and passion for web development and UI/UX design.
-
-## 💡 Purpose
-
-The purpose of this portfolio is to showcase my:
-- Technical skills
-- Real-world projects
-- Design creativity
-- Certifications
-- Career achievements
+- LinkedIn: https://linkedin.com/in/karthikeyan-k-u-689858386
+- GitHub: https://github.com/Karthikeyan-k-u
 
 ## 📬 Contact
 
