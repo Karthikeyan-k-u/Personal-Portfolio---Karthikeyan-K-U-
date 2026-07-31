@@ -1,0 +1,43 @@
+name: Deploy Portfolio to Cloudflare Pages
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "final/**"
+      - ".github/workflows/deploy-pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  deployments: write
+
+concurrency:
+  group: cloudflare-pages-production
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Deploy Portfolio
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Verify deployment directory
+        shell: bash
+        run: |
+          test -d final
+          test -f final/index.html
+          test -f final/og-image.png
+          echo "Deployment directory verified."
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy final --project-name=portfolio-karthikeyan-k-u --branch=main
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
