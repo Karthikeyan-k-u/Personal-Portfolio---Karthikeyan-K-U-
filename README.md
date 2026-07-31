@@ -2,7 +2,7 @@
 
 A modern and responsive personal portfolio website showcasing my skills, projects, certifications, achievements, and experience as a Frontend Developer and UI/UX Designer.
 
-🔗 **Live Demo:** https://personal-portfolio---karthikeyan-k-u.pages.dev
+🔗 **Live Demo:** https://portfolio-karthikeyan-k-u.pages.dev
 
 ## 🚀 Features
 

@@ -226,7 +226,7 @@ window.PORTFOLIO = {
       badge: "Personal Project",
       desc: "Designed and deployed this portfolio site with project, skills, certification, and achievement sections, plus direct GitHub and LinkedIn links, on Cloudflare Pages.",
       tech: ["HTML", "CSS", "JavaScript", "Cloudflare Pages"],
-      live: "https://personal-portfolio---karthikeyan-k-u.pages.dev",
+      live: "https://portfolio-karthikeyan-k-u.pages.dev",
       repo: "https://github.com/Karthikeyan-k-u/Personal-Portfolio---Karthikeyan-K-U-",
       featured: true,
     },

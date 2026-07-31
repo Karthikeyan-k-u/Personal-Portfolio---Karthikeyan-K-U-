@@ -7,7 +7,7 @@
 <meta name="description" content="Portfolio of Karthikeyan K U, B.E. Computer Science & Engineering student. Front-end development, Java OOP, Python, UI/UX, and web development projects.">
 <meta name="author" content="Karthikeyan K U">
 <meta name="keywords" content="Karthikeyan K U, portfolio, front-end developer, web developer, CSE student, UI/UX, Java, Python, Cloudflare">
-<link rel="canonical" href="https://personal-portfolio---karthikeyan-k-u.pages.dev/">
+<link rel="canonical" href="https://portfolio-karthikeyan-k-u.pages.dev/">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="apple-touch-icon" href="favicon.png">
 
@@ -15,9 +15,17 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Karthikeyan K U — CSE Undergraduate Portfolio">
 <meta property="og:description" content="Front-End Developer &amp; UI/UX Enthusiast. Explore my projects, skills, certifications, and achievements.">
-<meta property="og:url" content="https://personal-portfolio---karthikeyan-k-u.pages.dev/">
-<meta property="og:image" content="https://personal-portfolio---karthikeyan-k-u.pages.dev/og-image.png">
+<meta property="og:url" content="https://portfolio-karthikeyan-k-u.pages.dev/">
+<meta property="og:image" content="https://portfolio-karthikeyan-k-u.pages.dev/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Karthikeyan K U — Computer Science Student &amp; Front-End Developer">
+
+<!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Karthikeyan K U — CSE Undergraduate Portfolio">
+<meta name="twitter:description" content="Front-End Developer &amp; UI/UX Enthusiast. Explore my projects, skills, certifications, and achievements.">
+<meta name="twitter:image" content="https://portfolio-karthikeyan-k-u.pages.dev/og-image.png">
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -469,28 +477,77 @@ html[data-theme="light"] .theme-toggle .icon-moon{display:block}
 /* ============================================================
    About
    ============================================================ */
-.about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px;align-items:center}
-.about-img{position:relative}
-.about-img img{
-  border-radius:20px;
-  border:1px solid var(--border);
-  box-shadow:var(--shadow);
-}
-.about-img::before{
+.about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
+.about-media{position:relative;max-width:430px;justify-self:end}
+.about-media::before{
   content:"";
   position:absolute;
-  inset:-14px;
-  border-radius:26px;
+  inset:-16px;
+  border-radius:32px;
   border:1px solid var(--border);
   z-index:-1;
-  transform:rotate(2deg);
+  transform:rotate(-2.5deg);
+  transition:transform .3s ease;
 }
+.about-media:hover::before{transform:rotate(-1deg)}
+.about-frame{
+  position:relative;
+  border-radius:24px;
+  padding:10px;
+  background:var(--gradient);
+  box-shadow:var(--glow),var(--shadow);
+}
+.about-frame::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:24px;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);
+  pointer-events:none;
+}
+.about-frame img{
+  width:100%;
+  height:auto;
+  aspect-ratio:4/5;
+  object-fit:cover;
+  object-position:center 20%;
+  border-radius:16px;
+  border:5px solid var(--bg);
+  display:block;
+}
+.about-badge{
+  position:absolute;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:9px 15px;
+  border-radius:999px;
+  background:var(--card);
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+  font-family:var(--font-heading);
+  font-size:.76rem;
+  font-weight:600;
+  white-space:nowrap;
+}
+.about-badge .dot{color:var(--primary)}
+.about-badge.b1{top:-14px;right:-6px;animation:float 5s ease-in-out infinite}
+.about-badge.b2{bottom:-12px;left:-10px;animation:float 5s ease-in-out infinite;animation-delay:1.6s}
 .about-copy h2{margin-bottom:16px}
 .about-copy p{margin-bottom:14px}
-.about-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.about-copy .lead{font-size:1.06rem;color:var(--text)}
+.about-divider{
+  height:2px;
+  max-width:220px;
+  margin:26px 0 20px;
+  background:var(--gradient);
+  border-radius:2px;
+  opacity:.55;
+}
+.about-tags{display:flex;flex-wrap:wrap;gap:10px}
 @media(max-width:900px){
-  .about-grid{grid-template-columns:1fr;gap:44px}
-  .about-img{max-width:320px;margin:0 auto}
+  .about-grid{grid-template-columns:1fr;gap:56px}
+  .about-media{max-width:320px;margin:0 auto;justify-self:center}
 }
 
 /* ============================================================
@@ -1007,13 +1064,17 @@ footer p{font-size:.85rem}
 <section class="section" id="about">
   <div class="container">
     <div class="about-grid">
-      <div class="about-img reveal">
-        <img src="profile pic.jpeg" alt="Karthikeyan K U" width="480" height="480" loading="lazy">
+      <div class="about-media reveal">
+        <div class="about-frame">
+          <img src="profile-about.jpg" alt="Portrait of Karthikeyan K U" width="480" height="600" loading="lazy">
+        </div>
+        <span class="about-badge b1"><span class="dot">●</span> B.E. CSE · Class of 2029</span>
+        <span class="about-badge b2"><span class="dot">●</span> Chennai, India</span>
       </div>
       <div class="about-copy reveal">
         <span class="eyebrow">About Me</span>
         <h2>Turning curiosity into <span class="text-gradient">clean code</span></h2>
-        <p>
+        <p class="lead">
           I'm a Computer Science &amp; Engineering student at Prince Dr. K. Vasudevan College of Engineering
           who loves building for the web. From my first HTML page to full responsive React interfaces,
           I enjoy every layer of front-end development — structure, style, behaviour, and performance.
@@ -1026,6 +1087,7 @@ footer p{font-size:.85rem}
         <p>
           My goal is simple: keep building, keep learning, and ship things people actually enjoy using.
         </p>
+        <div class="about-divider" aria-hidden="true"></div>
         <div class="about-tags">
           <span class="chip">HTML5</span>
           <span class="chip">CSS3</span>
