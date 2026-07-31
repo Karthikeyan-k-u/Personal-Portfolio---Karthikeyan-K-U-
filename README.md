@@ -6,19 +6,18 @@ A modern and responsive personal portfolio website showcasing my skills, project
 
 ## 🚀 Features
 
-- Responsive modern UI with dark/light theme toggle
-- Smooth scroll animations and transitions
-- Typing animation hero section
-- Project showcase with category filtering (Front-End, Java OOP, Java Swing, Python, UI/UX)
-- Featured projects section
-- Searchable certifications grid
-- Education timeline and achievements
-- Internship experience section
+- Responsive black-and-purple dark theme with light/dark toggle (dark default)
+- Reveal-on-scroll animations and reduced-motion support
+- Hero with profile, social links, and animated stat counters
+- Live GitHub repository count in the stats strip
+- Featured projects on the homepage
+- Project archive page with category filtering (Front-End, Java OOP, Java Swing, Python, UI/UX)
+- Searchable certifications grid with a Featured-only toggle
+- Education, achievements, and internship experience sections
 - Resume view/download
-- Contact form with client-side validation
+- Contact form with validation that opens your email app
 - Mobile-friendly hamburger menu
 - Scroll progress bar and back-to-top button
-- Custom cursor follower
 
 ## 🛠️ Built With
 
@@ -33,11 +32,11 @@ A modern and responsive personal portfolio website showcasing my skills, project
 ## 📂 Sections Included
 
 - Home
-- About (Education, Achievements, Languages)
+- About (Education, Achievements, Skills)
 - Skills
 - Internship (Experience)
 - Featured Projects
-- Projects (Filterable)
+- Projects (Filterable archive)
 - Certifications (Searchable)
 - Resume
 - Connect (GitHub & LinkedIn)

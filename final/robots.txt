@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://personal-portfolio---karthikeyan-k-u.pages.dev/sitemap.xml
