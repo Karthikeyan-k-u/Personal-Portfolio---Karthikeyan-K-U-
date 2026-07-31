@@ -240,9 +240,9 @@ footer p{font-size:.85rem}
 .back-top svg{width:19px;height:19px}
 
 /* ============================================================
-   Custom cursor: violet glow + ring
+   Custom cursor: premium violet dot, ring + soft glow
    ============================================================ */
-.cursor-glow,.cursor-ring{
+.cursor-glow,.cursor-ring,.cursor-dot{
   position:fixed;
   top:0;left:0;
   border-radius:50%;
@@ -254,19 +254,28 @@ footer p{font-size:.85rem}
 }
 .cursor-glow{
   z-index:-1;
-  width:130px;height:130px;
-  background:radial-gradient(circle,rgba(168,85,247,.42) 0%,rgba(124,58,237,.20) 38%,rgba(168,85,247,0) 68%);
-  filter:blur(4px);
+  width:60px;height:60px;
+  background:radial-gradient(circle,rgba(168,85,247,.14) 0%,rgba(168,85,247,0) 70%);
 }
 .cursor-ring{
   z-index:9999;
-  width:34px;height:34px;
-  border:1.5px solid rgba(168,85,247,.85);
-  box-shadow:0 0 12px rgba(168,85,247,.35),inset 0 0 6px rgba(168,85,247,.15);
+  width:20px;height:20px;
+  border:1px solid rgba(168,85,247,.5);
+  background:rgba(168,85,247,.08);
 }
-.cursor-glow.is-on,.cursor-ring.is-on{opacity:1}
-@media (pointer:coarse){.cursor-glow,.cursor-ring{display:none!important}}
-@media (prefers-reduced-motion:reduce){.cursor-glow,.cursor-ring{display:none!important}}
+.cursor-ring.is-hover{
+  border-color:rgba(168,85,247,.85);
+  background:rgba(168,85,247,.04);
+  box-shadow:0 0 8px rgba(168,85,247,.16);
+}
+.cursor-dot{
+  z-index:9999;
+  width:4px;height:4px;
+  background:rgba(168,85,247,.9);
+}
+.cursor-glow.is-on,.cursor-ring.is-on,.cursor-dot.is-on{opacity:1}
+@media (pointer:coarse){.cursor-glow,.cursor-ring,.cursor-dot{display:none!important}}
+@media (prefers-reduced-motion:reduce){.cursor-glow,.cursor-ring,.cursor-dot{display:none!important}}
 </style>
 </head>
 <body>
@@ -502,9 +511,10 @@ footer p{font-size:.85rem}
 <!-- ================= Custom cursor ================= -->
 <div class="cursor-glow" aria-hidden="true"></div>
 <div class="cursor-ring" aria-hidden="true"></div>
+<div class="cursor-dot" aria-hidden="true"></div>
 
 <script>
-/* ---------- custom cursor: violet glow + ring ---------- */
+/* ---------- custom cursor: premium violet dot, ring + glow ---------- */
 (function () {
   if ((window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) ||
       (window.matchMedia && matchMedia("(pointer: coarse)").matches) ||
@@ -512,11 +522,12 @@ footer p{font-size:.85rem}
 
   var glow = document.querySelector(".cursor-glow");
   var ring = document.querySelector(".cursor-ring");
-  if (!glow || !ring) return;
+  var dot = document.querySelector(".cursor-dot");
+  if (!glow || !ring || !dot) return;
 
   var HOVER = "a, button, input, textarea, select, [role='button'], .project-card, .cert-card";
   var mX = -9999, mY = -9999, gX = -9999, gY = -9999, rX = -9999, rY = -9999;
-  var scale = 1, target = 1, glowScale = 1, glowTarget = 1, hovering = false, active = false;
+  var scale = 1, target = 1, hovering = false, active = false;
 
   window.addEventListener("mousemove", function (e) {
     mX = e.clientX; mY = e.clientY;
@@ -525,6 +536,7 @@ footer p{font-size:.85rem}
       gX = rX = mX; gY = rY = mY;
       glow.classList.add("is-on");
       ring.classList.add("is-on");
+      dot.classList.add("is-on");
     }
   }, { passive: true });
 
@@ -532,29 +544,30 @@ footer p{font-size:.85rem}
     active = false;
     glow.classList.remove("is-on");
     ring.classList.remove("is-on");
+    dot.classList.remove("is-on");
   });
 
   document.addEventListener("mouseover", function (e) {
-    if (e.target.closest && e.target.closest(HOVER)) { hovering = true; target = 1.6; glowTarget = 1.25; }
+    if (e.target.closest && e.target.closest(HOVER)) { hovering = true; target = 1.5; ring.classList.add("is-hover"); }
   });
 
   document.addEventListener("mouseout", function (e) {
-    if (e.target.closest && e.target.closest(HOVER)) { hovering = false; target = 1; glowTarget = 1; }
+    if (e.target.closest && e.target.closest(HOVER)) { hovering = false; target = 1; ring.classList.remove("is-hover"); }
   });
 
-  window.addEventListener("mousedown", function () { target = 0.75; glowTarget = 0.85; });
-  window.addEventListener("mouseup", function () { target = hovering ? 1.6 : 1; glowTarget = hovering ? 1.25 : 1; });
+  window.addEventListener("mousedown", function () { target = 0.85; });
+  window.addEventListener("mouseup", function () { target = hovering ? 1.5 : 1; });
 
   function tick() {
     if (active) {
       gX += (mX - gX) * 0.12;
       gY += (mY - gY) * 0.12;
-      rX += (mX - rX) * 0.45;
-      rY += (mY - rY) * 0.45;
-      scale += (target - scale) * 0.2;
-      glowScale += (glowTarget - glowScale) * 0.2;
-      glow.style.transform = "translate3d(" + gX + "px," + gY + "px,0) translate(-50%,-50%) scale(" + glowScale + ")";
+      rX += (mX - rX) * 0.28;
+      rY += (mY - rY) * 0.28;
+      scale += (target - scale) * 0.5;
+      glow.style.transform = "translate3d(" + gX + "px," + gY + "px,0) translate(-50%,-50%)";
       ring.style.transform = "translate3d(" + rX + "px," + rY + "px,0) translate(-50%,-50%) scale(" + scale + ")";
+      dot.style.transform = "translate3d(" + mX + "px," + mY + "px,0) translate(-50%,-50%)";
     }
     requestAnimationFrame(tick);
   }
