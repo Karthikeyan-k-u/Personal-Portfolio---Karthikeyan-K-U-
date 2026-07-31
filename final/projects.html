@@ -137,10 +137,6 @@ header.site-header{
 .nav-links a{color:var(--text);font-family:var(--font-heading);font-size:.9rem;font-weight:500;position:relative;padding:4px 0}
 .nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--gradient);border-radius:2px;transition:width .25s ease}
 .nav-links a:hover::after{width:100%}
-.nav-links a.nav-cta{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:999px;background:var(--gradient);color:#fff;box-shadow:var(--glow);font-weight:600;white-space:nowrap;transition:transform .2s ease,box-shadow .2s ease}
-.nav-links a.nav-cta::after{display:none}
-.nav-links a.nav-cta:hover{color:#fff;transform:translateY(-2px);box-shadow:0 0 54px rgba(168,85,247,.45)}
-.nav-links a.nav-cta svg{width:15px;height:15px}
 .nav-actions{display:flex;align-items:center;gap:14px}
 .theme-toggle{
   width:40px;height:40px;border-radius:50%;border:1px solid var(--border);
@@ -170,7 +166,6 @@ html[data-theme="light"] .theme-toggle .icon-moon{display:block}
   .nav-links li{width:100%}
   .nav-links a{display:block;padding:14px 4px;border-bottom:1px solid var(--border)}
   .nav-links a::after{display:none}
-  .nav-links a.nav-cta{display:inline-flex;justify-content:center;margin-top:16px;padding:13px 20px;border:none;border-radius:999px}
 }
 
 /* Page hero */
@@ -259,9 +254,9 @@ footer p{font-size:.85rem}
 }
 .cursor-glow{
   z-index:-1;
-  width:220px;height:220px;
+  width:130px;height:130px;
   background:radial-gradient(circle,rgba(168,85,247,.42) 0%,rgba(124,58,237,.20) 38%,rgba(168,85,247,0) 68%);
-  filter:blur(6px);
+  filter:blur(4px);
 }
 .cursor-ring{
   z-index:9999;
@@ -292,10 +287,6 @@ footer p{font-size:.85rem}
         <li><a href="index.html#education">Education</a></li>
         <li><a href="index.html#certifications">Certifications</a></li>
         <li><a href="index.html#contact">Contact</a></li>
-        <li><a class="nav-cta" href="Karthikeyan-K-U-Resume.pdf" target="_blank" rel="noopener">
-          Download Resume
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-        </a></li>
       </ul>
     </nav>
     <div class="nav-actions">
@@ -525,7 +516,7 @@ footer p{font-size:.85rem}
 
   var HOVER = "a, button, input, textarea, select, [role='button'], .project-card, .cert-card";
   var mX = -9999, mY = -9999, gX = -9999, gY = -9999, rX = -9999, rY = -9999;
-  var scale = 1, target = 1, hovering = false, active = false;
+  var scale = 1, target = 1, glowScale = 1, glowTarget = 1, hovering = false, active = false;
 
   window.addEventListener("mousemove", function (e) {
     mX = e.clientX; mY = e.clientY;
@@ -544,24 +535,25 @@ footer p{font-size:.85rem}
   });
 
   document.addEventListener("mouseover", function (e) {
-    if (e.target.closest && e.target.closest(HOVER)) { hovering = true; target = 1.6; }
+    if (e.target.closest && e.target.closest(HOVER)) { hovering = true; target = 1.6; glowTarget = 1.25; }
   });
 
   document.addEventListener("mouseout", function (e) {
-    if (e.target.closest && e.target.closest(HOVER)) { hovering = false; target = 1; }
+    if (e.target.closest && e.target.closest(HOVER)) { hovering = false; target = 1; glowTarget = 1; }
   });
 
-  window.addEventListener("mousedown", function () { target = 0.75; });
-  window.addEventListener("mouseup", function () { target = hovering ? 1.6 : 1; });
+  window.addEventListener("mousedown", function () { target = 0.75; glowTarget = 0.85; });
+  window.addEventListener("mouseup", function () { target = hovering ? 1.6 : 1; glowTarget = hovering ? 1.25 : 1; });
 
   function tick() {
     if (active) {
-      gX += (mX - gX) * 0.08;
-      gY += (mY - gY) * 0.08;
-      rX += (mX - rX) * 0.35;
-      rY += (mY - rY) * 0.35;
+      gX += (mX - gX) * 0.12;
+      gY += (mY - gY) * 0.12;
+      rX += (mX - rX) * 0.45;
+      rY += (mY - rY) * 0.45;
       scale += (target - scale) * 0.2;
-      glow.style.transform = "translate3d(" + gX + "px," + gY + "px,0) translate(-50%,-50%)";
+      glowScale += (glowTarget - glowScale) * 0.2;
+      glow.style.transform = "translate3d(" + gX + "px," + gY + "px,0) translate(-50%,-50%) scale(" + glowScale + ")";
       ring.style.transform = "translate3d(" + rX + "px," + rY + "px,0) translate(-50%,-50%) scale(" + scale + ")";
     }
     requestAnimationFrame(tick);
