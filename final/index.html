@@ -3,29 +3,58 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Karthikeyan K U — CSE Undergraduate · Front-End Developer &amp; UI/UX Enthusiast</title>
-<meta name="description" content="Portfolio of Karthikeyan K U, B.E. Computer Science & Engineering student. Front-end development, Java OOP, Python, UI/UX, and web development projects.">
+<title>Karthikeyan K U | Emerging Software Engineer &amp; Front-End Developer</title>
+<meta name="description" content="Portfolio of Karthikeyan K U, an emerging software engineer pursuing Computer Science and Engineering alongside Data Science and Applications at IIT Madras, with experience in front-end development, Java, Python, UI/UX, and responsive web applications.">
 <meta name="author" content="Karthikeyan K U">
-<meta name="keywords" content="Karthikeyan K U, portfolio, front-end developer, web developer, CSE student, UI/UX, Java, Python, Cloudflare">
+<meta name="keywords" content="Karthikeyan K U, portfolio, emerging software engineer, front-end developer, web developer, Data Science and Applications, IIT Madras, UI/UX, Java, Python, Cloudflare">
 <link rel="canonical" href="https://portfolio-karthikeyan-k-u.pages.dev/">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="apple-touch-icon" href="favicon.png">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="Karthikeyan K U — CSE Undergraduate Portfolio">
-<meta property="og:description" content="Front-End Developer &amp; UI/UX Enthusiast. Explore my projects, skills, certifications, and achievements.">
+<meta property="og:site_name" content="Karthikeyan K U Portfolio">
+<meta property="og:title" content="Karthikeyan K U | Emerging Software Engineer &amp; Front-End Developer">
+<meta property="og:description" content="Portfolio of Karthikeyan K U, an emerging software engineer pursuing Computer Science and Engineering alongside Data Science and Applications at IIT Madras, with experience in front-end development, Java, Python, UI/UX, and responsive web applications.">
 <meta property="og:url" content="https://portfolio-karthikeyan-k-u.pages.dev/">
 <meta property="og:image" content="https://portfolio-karthikeyan-k-u.pages.dev/og-image.png">
+<meta property="og:image:secure_url" content="https://portfolio-karthikeyan-k-u.pages.dev/og-image.png">
+<meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Karthikeyan K U — Computer Science Student &amp; Front-End Developer">
-
+<meta property="og:image:alt" content="Karthikeyan K U — Emerging Software Engineer &amp; Front-End Developer">
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Karthikeyan K U — CSE Undergraduate Portfolio">
-<meta name="twitter:description" content="Front-End Developer &amp; UI/UX Enthusiast. Explore my projects, skills, certifications, and achievements.">
+<meta name="twitter:title" content="Karthikeyan K U | Emerging Software Engineer &amp; Front-End Developer">
+<meta name="twitter:description" content="Portfolio of Karthikeyan K U, an emerging software engineer pursuing Computer Science and Engineering alongside Data Science and Applications at IIT Madras, with experience in front-end development, Java, Python, UI/UX, and responsive web applications.">
 <meta name="twitter:image" content="https://portfolio-karthikeyan-k-u.pages.dev/og-image.png">
+
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "name": "Karthikeyan K U",
+      "url": "https://portfolio-karthikeyan-k-u.pages.dev/",
+      "jobTitle": "Emerging Software Engineer &amp; Front-End Developer",
+      "description": "Portfolio of Karthikeyan K U, an emerging software engineer pursuing Computer Science and Engineering alongside Data Science and Applications at IIT Madras, with experience in front-end development, Java, Python, UI/UX, and responsive web applications.",
+      "knowsAbout": ["Front-End Development", "Java", "Python", "UI/UX", "Responsive Web Applications", "Data Science"],
+      "sameAs": [
+        "https://github.com/Karthikeyan-k-u",
+        "https://www.linkedin.com/in/karthikeyan-k-u-689858386/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "name": "Karthikeyan K U — Portfolio",
+      "url": "https://portfolio-karthikeyan-k-u.pages.dev/",
+      "description": "Portfolio of Karthikeyan K U, an emerging software engineer pursuing Computer Science and Engineering alongside Data Science and Applications at IIT Madras."
+    }
+  ]
+}
+</script>
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -262,14 +291,18 @@ header.site-header{
   justify-content:space-between;
   height:72px;
 }
-.logo{
-  font-family:var(--font-display);
+.brand-logo{
+  display:inline-flex;
+  align-items:center;
+  gap:0.28em;
+  white-space:nowrap;
+  font-family:"Cinzel Decorative","Cinzel",serif;
   font-size:1.25rem;
-  font-weight:900;
+  font-weight:700;
   color:var(--text);
   letter-spacing:.04em;
 }
-.logo span{color:var(--primary)}
+.brand-logo span{color:var(--primary)}
 .nav-links{display:flex;align-items:center;gap:30px;list-style:none}
 .nav-links a{
   color:var(--text);
@@ -289,6 +322,22 @@ header.site-header{
   transition:width .25s ease;
 }
 .nav-links a:hover::after{width:100%}
+.nav-links a.nav-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 20px;
+  border-radius:999px;
+  background:var(--gradient);
+  color:#fff;
+  box-shadow:var(--glow);
+  font-weight:600;
+  white-space:nowrap;
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+.nav-links a.nav-cta::after{display:none}
+.nav-links a.nav-cta:hover{color:#fff;transform:translateY(-2px);box-shadow:0 0 54px rgba(168,85,247,.45)}
+.nav-links a.nav-cta svg{width:15px;height:15px}
 .nav-actions{display:flex;align-items:center;gap:14px}
 
 .theme-toggle{
@@ -336,6 +385,14 @@ html[data-theme="light"] .theme-toggle .icon-moon{display:block}
   .nav-links li{width:100%}
   .nav-links a{display:block;padding:14px 4px;border-bottom:1px solid var(--border)}
   .nav-links a::after{display:none}
+  .nav-links a.nav-cta{
+    display:inline-flex;
+    justify-content:center;
+    margin-top:16px;
+    padding:13px 20px;
+    border:none;
+    border-radius:999px;
+  }
 }
 
 /* ============================================================
@@ -510,29 +567,12 @@ html[data-theme="light"] .theme-toggle .icon-moon{display:block}
   height:auto;
   aspect-ratio:4/5;
   object-fit:cover;
-  object-position:center 20%;
-  border-radius:16px;
+  object-position:center 25%;
+  border-radius:20px;
   border:5px solid var(--bg);
   display:block;
 }
-.about-badge{
-  position:absolute;
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:9px 15px;
-  border-radius:999px;
-  background:var(--card);
-  border:1px solid var(--border);
-  box-shadow:var(--shadow);
-  font-family:var(--font-heading);
-  font-size:.76rem;
-  font-weight:600;
-  white-space:nowrap;
-}
-.about-badge .dot{color:var(--primary)}
-.about-badge.b1{top:-14px;right:-6px;animation:float 5s ease-in-out infinite}
-.about-badge.b2{bottom:-12px;left:-10px;animation:float 5s ease-in-out infinite;animation-delay:1.6s}
+.about-copy{max-width:640px}
 .about-copy h2{margin-bottom:16px}
 .about-copy p{margin-bottom:14px}
 .about-copy .lead{font-size:1.06rem;color:var(--text)}
@@ -545,6 +585,7 @@ html[data-theme="light"] .theme-toggle .icon-moon{display:block}
   opacity:.55;
 }
 .about-tags{display:flex;flex-wrap:wrap;gap:10px}
+.about-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:4px}
 @media(max-width:900px){
   .about-grid{grid-template-columns:1fr;gap:56px}
   .about-media{max-width:320px;margin:0 auto;justify-self:center}
@@ -721,7 +762,7 @@ html[data-theme="light"] .theme-toggle .icon-moon{display:block}
 /* ============================================================
    Education
    ============================================================ */
-.edu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px}
 .edu-card{
   background:var(--card);
   border:1px solid var(--border);
@@ -758,8 +799,6 @@ html[data-theme="light"] .theme-toggle .icon-moon{display:block}
 .edu-inst{font-size:.92rem;color:var(--primary);font-weight:600}
 .edu-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:4px}
 .edu-meta .chip{font-size:.72rem}
-@media(max-width:1000px){.edu-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:640px){.edu-grid{grid-template-columns:1fr}}
 
 /* ============================================================
    Achievements
@@ -956,8 +995,17 @@ footer.site-footer{
   margin-top:40px;
 }
 .footer-grid{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
-.footer-logo{font-family:var(--font-display);font-weight:900;font-size:1.05rem}
-.footer-logo span{color:var(--primary)}
+.footer-logo{
+  display:inline-flex;
+  align-items:center;
+  gap:0.28em;
+  white-space:nowrap;
+  font-family:"Cinzel Decorative","Cinzel",serif;
+  font-weight:700;
+  font-size:1.05rem;
+}
+.footer-logo span:first-child{color:var(--text)}
+.footer-logo span:last-child{color:var(--primary)}
 footer p{font-size:.85rem}
 .footer-links{display:flex;gap:18px;list-style:none}
 .footer-links a{font-size:.85rem;color:var(--muted)}
@@ -980,6 +1028,35 @@ footer p{font-size:.85rem}
 .back-top.show{opacity:1;pointer-events:auto}
 .back-top:hover{border-color:var(--primary);color:var(--primary);transform:translateY(-3px)}
 .back-top svg{width:19px;height:19px}
+
+/* ============================================================
+   Custom cursor: violet glow + ring
+   ============================================================ */
+.cursor-glow,.cursor-ring{
+  position:fixed;
+  top:0;left:0;
+  border-radius:50%;
+  pointer-events:none;
+  will-change:transform;
+  opacity:0;
+  transform:translate3d(-9999px,-9999px,0) translate(-50%,-50%);
+  transition:opacity .3s ease;
+}
+.cursor-glow{
+  z-index:-1;
+  width:220px;height:220px;
+  background:radial-gradient(circle,rgba(168,85,247,.42) 0%,rgba(124,58,237,.20) 38%,rgba(168,85,247,0) 68%);
+  filter:blur(6px);
+}
+.cursor-ring{
+  z-index:9999;
+  width:34px;height:34px;
+  border:1.5px solid rgba(168,85,247,.85);
+  box-shadow:0 0 12px rgba(168,85,247,.35),inset 0 0 6px rgba(168,85,247,.15);
+}
+.cursor-glow.is-on,.cursor-ring.is-on{opacity:1}
+@media (pointer:coarse){.cursor-glow,.cursor-ring{display:none!important}}
+@media (prefers-reduced-motion:reduce){.cursor-glow,.cursor-ring{display:none!important}}
 </style>
 </head>
 <body>
@@ -990,9 +1067,10 @@ footer p{font-size:.85rem}
 <!-- ================= Navbar ================= -->
 <header class="site-header">
   <div class="container nav">
-    <a href="#home" class="logo" aria-label="Karthikeyan K U home">Karthikeyan<span>.</span>KU</a>
+    <a href="#home" class="brand-logo" aria-label="Karthikeyan K U home"><span>K</span><span>U</span></a>
     <nav aria-label="Primary">
       <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#projects">Projects</a></li>
@@ -1000,6 +1078,10 @@ footer p{font-size:.85rem}
         <li><a href="#education">Education</a></li>
         <li><a href="#certifications">Certifications</a></li>
         <li><a href="#contact">Contact</a></li>
+        <li><a class="nav-cta" href="Karthikeyan-K-U-Resume.pdf" target="_blank" rel="noopener">
+          Download Resume
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        </a></li>
       </ul>
     </nav>
     <div class="nav-actions">
@@ -1023,11 +1105,11 @@ footer p{font-size:.85rem}
       <div class="reveal">
         <span class="eyebrow">CSE Undergraduate · Class of 2029</span>
         <h1>Karthikeyan<span class="text-gradient"> K U</span></h1>
-        <div class="subtitle">Front-End Developer &amp; UI/UX Enthusiast</div>
+        <div class="subtitle">Emerging Software Engineer &amp; Front-End Developer</div>
         <p class="intro">
-          I build clean, responsive web experiences with HTML, CSS, JavaScript, and React,
-          and I love turning ideas into accessible, pixel-polished interfaces.
-          Currently pursuing B.E. Computer Science &amp; Engineering.
+          I build responsive and user-focused digital products using JavaScript, React, Java, Python,
+          Supabase, and modern web technologies. I am pursuing Computer Science and Engineering alongside
+          the BS in Data Science and Applications at IIT Madras.
         </p>
         <div class="hero-ctas">
           <a class="btn btn-primary" href="#projects">
@@ -1068,35 +1150,57 @@ footer p{font-size:.85rem}
         <div class="about-frame">
           <img src="profile-about.jpg" alt="Portrait of Karthikeyan K U" width="480" height="600" loading="lazy">
         </div>
-        <span class="about-badge b1"><span class="dot">●</span> B.E. CSE · Class of 2029</span>
-        <span class="about-badge b2"><span class="dot">●</span> Chennai, India</span>
       </div>
       <div class="about-copy reveal">
         <span class="eyebrow">About Me</span>
         <h2>Turning curiosity into <span class="text-gradient">clean code</span></h2>
         <p class="lead">
-          I'm a Computer Science &amp; Engineering student at Prince Dr. K. Vasudevan College of Engineering
-          who loves building for the web. From my first HTML page to full responsive React interfaces,
-          I enjoy every layer of front-end development — structure, style, behaviour, and performance.
+          I am an emerging software engineer pursuing a B.E. in Computer Science and Engineering
+          alongside a BS in Data Science and Applications at IIT Madras. My interests lie at the
+          intersection of software engineering, user experience, and data-driven technology.
         </p>
         <p>
-          I've completed an industry internship building responsive travel-platform pages, I'm strong in
-          Java OOP (Elite &amp; Silver via NPTEL), and I'm constantly learning — Cloudflare Workers,
-          Supabase, UI/UX fundamentals, and AI tooling.
+          I have hands-on experience in front-end development, UI/UX design, Java, Python, JavaScript,
+          object-oriented programming, database management, and responsive web application development.
+          I enjoy transforming ideas into functional digital products that are intuitive, reliable,
+          and designed to solve real-world problems.
         </p>
         <p>
-          My goal is simple: keep building, keep learning, and ship things people actually enjoy using.
+          Through academic, internship, and independent projects, I have built responsive websites,
+          admin dashboards, travel-management platforms, Java-based management systems, Python
+          applications, and interactive web solutions. These experiences have strengthened my skills in
+          problem-solving, software design, debugging, application architecture, and user-centred development.
+        </p>
+        <p>
+          I hold an NPTEL Elite and Silver certification in Object-Oriented Programming and have
+          completed additional certifications in Java, Python, responsive web design, user experience,
+          cloud technologies, and AI development.
+        </p>
+        <p>
+          I am committed to continuous learning and professional growth, with the goal of becoming a
+          well-rounded software engineer capable of building scalable, efficient, and meaningful digital products.
+        </p>
+        <p>
+          I am open to internships, collaborative projects, and professional opportunities in software
+          engineering, front-end development, Java, Python, UI/UX, and data science.
         </p>
         <div class="about-divider" aria-hidden="true"></div>
         <div class="about-tags">
-          <span class="chip">HTML5</span>
-          <span class="chip">CSS3</span>
-          <span class="chip">JavaScript</span>
-          <span class="chip">React</span>
-          <span class="chip">Java</span>
-          <span class="chip">Python</span>
-          <span class="chip">UI/UX</span>
-          <span class="chip">Cloudflare</span>
+          <span class="chip">B.E. Computer Science and Engineering</span>
+          <span class="chip">BS in Data Science and Applications — IIT Madras</span>
+          <span class="chip">Web Development Intern — ATC Travelzone</span>
+          <span class="chip">Chennai, Tamil Nadu</span>
+          <span class="chip">Open to Opportunities</span>
+        </div>
+        <div class="about-ctas">
+          <a class="btn btn-primary" href="Karthikeyan-K-U-Resume.pdf" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            Download Resume
+          </a>
+          <a class="btn btn-outline" href="#projects">
+            View Projects
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
         </div>
       </div>
     </div>
@@ -1235,8 +1339,8 @@ footer p{font-size:.85rem}
   <div class="container">
     <div class="section-head center reveal">
       <span class="eyebrow">Contact</span>
-      <h2>Let's <span class="text-gradient">connect</span></h2>
-      <p>Have a project, opportunity, or just want to say hi? My inbox is always open.</p>
+      <h2>Let's <span class="text-gradient">Build Something Meaningful</span></h2>
+      <p>I am open to internships, collaborative projects, and professional opportunities in software engineering, front-end development, Java, Python, UI/UX, and data science.</p>
     </div>
     <div class="contact-grid">
       <div class="contact-info reveal">
@@ -1244,21 +1348,21 @@ footer p{font-size:.85rem}
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span>
           <div>
             <div class="lbl">Email</div>
-            <a class="val" href="mailto:KARTHUKEYAN.KU.cse29@princedrkvasudevan.com">KARTHUKEYAN.KU.cse29@princedrkvasudevan.com</a>
+            <a class="val" href="mailto:KARTHUKEYAN.KU.cse29@princedrkvasudevan.com">Mail Me</a>
           </div>
         </div>
         <div class="contact-line">
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></span>
           <div>
             <div class="lbl">GitHub</div>
-            <a class="val" href="https://github.com/Karthikeyan-k-u" target="_blank" rel="noopener">github.com/Karthikeyan-k-u</a>
+            <a class="val" href="https://github.com/Karthikeyan-k-u" target="_blank" rel="noopener">Repo's</a>
           </div>
         </div>
         <div class="contact-line">
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></span>
           <div>
             <div class="lbl">LinkedIn</div>
-            <a class="val" href="https://www.linkedin.com/in/karthikeyan-k-u-689858386/" target="_blank" rel="noopener">in/karthikeyan-k-u-689858386</a>
+            <a class="val" href="https://www.linkedin.com/in/karthikeyan-k-u-689858386/" target="_blank" rel="noopener">Profile</a>
           </div>
         </div>
         <div class="contact-line">
@@ -1305,12 +1409,13 @@ footer p{font-size:.85rem}
 <footer class="site-footer">
   <div class="container footer-grid">
     <div>
-      <div class="footer-logo">Karthikeyan<span>.</span>KU</div>
+      <div class="footer-logo"><span>K</span><span>U</span></div>
+      <p>Emerging Software Engineer focused on front-end development, Java, Python, UI/UX, and data-driven applications.</p>
       <p>© <span id="year">2026</span> Karthikeyan K U. Built with HTML, CSS &amp; JavaScript.</p>
     </div>
     <ul class="footer-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="projects.html">Projects</a></li>
+      <li><a href="https://github.com/Karthikeyan-k-u" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/karthikeyan-k-u-689858386/" target="_blank" rel="noopener">LinkedIn</a></li>
       <li><a href="Karthikeyan-K-U-Resume.pdf" target="_blank" rel="noopener">Resume</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -1514,16 +1619,16 @@ footer p{font-size:.85rem}
   /* ---------- education ---------- */
   var eduGrid = $("eduGrid");
   eduGrid.innerHTML = D.education.map(function (e) {
+    var chips = "";
+    if (e.years) chips += '<span class="chip">' + escapeHtml(e.years) + '</span>';
+    if (e.location) chips += '<span class="chip">' + escapeHtml(e.location) + '</span>';
+    if (e.meta) chips += '<span class="chip">' + escapeHtml(e.meta) + '</span>';
     return '<div class="edu-card reveal">' +
       (e.tag ? '<span class="edu-tag">' + escapeHtml(e.tag) + '</span>' : "") +
       '<span class="edu-icon">' + iconSvg("graduation") + '</span>' +
       '<h3>' + escapeHtml(e.degree) + '</h3>' +
       '<div class="edu-inst">' + escapeHtml(e.institution) + '</div>' +
-      '<div class="edu-meta">' +
-        '<span class="chip">' + escapeHtml(e.years) + '</span>' +
-        '<span class="chip">' + escapeHtml(e.location) + '</span>' +
-        '<span class="chip">' + escapeHtml(e.meta) + '</span>' +
-      '</div>' +
+      '<div class="edu-meta">' + chips + '</div>' +
     '</div>';
   }).join("");
 
@@ -1635,6 +1740,68 @@ footer p{font-size:.85rem}
   } else {
     dynamicReveals.forEach(function (el) { el.classList.add("visible"); });
   }
+})();
+</script>
+
+<!-- ================= Custom cursor ================= -->
+<div class="cursor-glow" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+
+<script>
+/* ---------- custom cursor: violet glow + ring ---------- */
+(function () {
+  if ((window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) ||
+      (window.matchMedia && matchMedia("(pointer: coarse)").matches) ||
+      navigator.maxTouchPoints > 0 || "ontouchstart" in window) return;
+
+  var glow = document.querySelector(".cursor-glow");
+  var ring = document.querySelector(".cursor-ring");
+  if (!glow || !ring) return;
+
+  var HOVER = "a, button, input, textarea, select, [role='button'], .project-card, .cert-card";
+  var mX = -9999, mY = -9999, gX = -9999, gY = -9999, rX = -9999, rY = -9999;
+  var scale = 1, target = 1, hovering = false, active = false;
+
+  window.addEventListener("mousemove", function (e) {
+    mX = e.clientX; mY = e.clientY;
+    if (!active) {
+      active = true;
+      gX = rX = mX; gY = rY = mY;
+      glow.classList.add("is-on");
+      ring.classList.add("is-on");
+    }
+  }, { passive: true });
+
+  document.addEventListener("mouseleave", function () {
+    active = false;
+    glow.classList.remove("is-on");
+    ring.classList.remove("is-on");
+  });
+
+  document.addEventListener("mouseover", function (e) {
+    if (e.target.closest && e.target.closest(HOVER)) { hovering = true; target = 1.6; }
+  });
+
+  document.addEventListener("mouseout", function (e) {
+    if (e.target.closest && e.target.closest(HOVER)) { hovering = false; target = 1; }
+  });
+
+  window.addEventListener("mousedown", function () { target = 0.75; });
+  window.addEventListener("mouseup", function () { target = hovering ? 1.6 : 1; });
+
+  function tick() {
+    if (active) {
+      gX += (mX - gX) * 0.08;
+      gY += (mY - gY) * 0.08;
+      rX += (mX - rX) * 0.35;
+      rY += (mY - rY) * 0.35;
+      scale += (target - scale) * 0.2;
+      glow.style.transform = "translate3d(" + gX + "px," + gY + "px,0) translate(-50%,-50%)";
+      ring.style.transform = "translate3d(" + rX + "px," + rY + "px,0) translate(-50%,-50%) scale(" + scale + ")";
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
 })();
 </script>
 </body>

@@ -15,7 +15,7 @@
 <meta property="og:image" content="https://portfolio-karthikeyan-k-u.pages.dev/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Karthikeyan K U — Computer Science Student &amp; Front-End Developer">
+<meta property="og:image:alt" content="Karthikeyan K U — Emerging Software Engineer &amp; Front-End Developer">
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
@@ -131,12 +131,16 @@ header.site-header{
   border-bottom:1px solid var(--border);
 }
 .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
-.logo{font-family:var(--font-display);font-size:1.25rem;font-weight:900;color:var(--text);letter-spacing:.04em}
-.logo span{color:var(--primary)}
+.brand-logo{display:inline-flex;align-items:center;gap:0.28em;white-space:nowrap;font-family:"Cinzel Decorative","Cinzel",serif;font-size:1.25rem;font-weight:700;color:var(--text);letter-spacing:.04em}
+.brand-logo span{color:var(--primary)}
 .nav-links{display:flex;align-items:center;gap:30px;list-style:none}
 .nav-links a{color:var(--text);font-family:var(--font-heading);font-size:.9rem;font-weight:500;position:relative;padding:4px 0}
 .nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--gradient);border-radius:2px;transition:width .25s ease}
 .nav-links a:hover::after{width:100%}
+.nav-links a.nav-cta{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:999px;background:var(--gradient);color:#fff;box-shadow:var(--glow);font-weight:600;white-space:nowrap;transition:transform .2s ease,box-shadow .2s ease}
+.nav-links a.nav-cta::after{display:none}
+.nav-links a.nav-cta:hover{color:#fff;transform:translateY(-2px);box-shadow:0 0 54px rgba(168,85,247,.45)}
+.nav-links a.nav-cta svg{width:15px;height:15px}
 .nav-actions{display:flex;align-items:center;gap:14px}
 .theme-toggle{
   width:40px;height:40px;border-radius:50%;border:1px solid var(--border);
@@ -166,6 +170,7 @@ html[data-theme="light"] .theme-toggle .icon-moon{display:block}
   .nav-links li{width:100%}
   .nav-links a{display:block;padding:14px 4px;border-bottom:1px solid var(--border)}
   .nav-links a::after{display:none}
+  .nav-links a.nav-cta{display:inline-flex;justify-content:center;margin-top:16px;padding:13px 20px;border:none;border-radius:999px}
 }
 
 /* Page hero */
@@ -222,8 +227,9 @@ html[data-theme="light"] .theme-toggle .icon-moon{display:block}
 /* Footer */
 footer.site-footer{border-top:1px solid var(--border);background:var(--bg-soft);padding:40px 0;margin-top:40px}
 .footer-grid{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
-.footer-logo{font-family:var(--font-display);font-weight:900;font-size:1.05rem}
-.footer-logo span{color:var(--primary)}
+.footer-logo{display:inline-flex;align-items:center;gap:0.28em;white-space:nowrap;font-family:"Cinzel Decorative","Cinzel",serif;font-weight:700;font-size:1.05rem}
+.footer-logo span:first-child{color:var(--text)}
+.footer-logo span:last-child{color:var(--primary)}
 footer p{font-size:.85rem}
 .footer-links{display:flex;gap:18px;list-style:none}
 .footer-links a{font-size:.85rem;color:var(--muted)}
@@ -237,6 +243,35 @@ footer p{font-size:.85rem}
 .back-top.show{opacity:1;pointer-events:auto}
 .back-top:hover{border-color:var(--primary);color:var(--primary);transform:translateY(-3px)}
 .back-top svg{width:19px;height:19px}
+
+/* ============================================================
+   Custom cursor: violet glow + ring
+   ============================================================ */
+.cursor-glow,.cursor-ring{
+  position:fixed;
+  top:0;left:0;
+  border-radius:50%;
+  pointer-events:none;
+  will-change:transform;
+  opacity:0;
+  transform:translate3d(-9999px,-9999px,0) translate(-50%,-50%);
+  transition:opacity .3s ease;
+}
+.cursor-glow{
+  z-index:-1;
+  width:220px;height:220px;
+  background:radial-gradient(circle,rgba(168,85,247,.42) 0%,rgba(124,58,237,.20) 38%,rgba(168,85,247,0) 68%);
+  filter:blur(6px);
+}
+.cursor-ring{
+  z-index:9999;
+  width:34px;height:34px;
+  border:1.5px solid rgba(168,85,247,.85);
+  box-shadow:0 0 12px rgba(168,85,247,.35),inset 0 0 6px rgba(168,85,247,.15);
+}
+.cursor-glow.is-on,.cursor-ring.is-on{opacity:1}
+@media (pointer:coarse){.cursor-glow,.cursor-ring{display:none!important}}
+@media (prefers-reduced-motion:reduce){.cursor-glow,.cursor-ring{display:none!important}}
 </style>
 </head>
 <body>
@@ -246,9 +281,10 @@ footer p{font-size:.85rem}
 
 <header class="site-header">
   <div class="container nav">
-    <a href="index.html" class="logo" aria-label="Karthikeyan K U home">Karthikeyan<span>.</span>KU</a>
+    <a href="index.html" class="brand-logo" aria-label="Karthikeyan K U home"><span>K</span><span>U</span></a>
     <nav aria-label="Primary">
       <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#home">Home</a></li>
         <li><a href="index.html#about">About</a></li>
         <li><a href="index.html#experience">Experience</a></li>
         <li><a href="index.html#projects">Projects</a></li>
@@ -256,6 +292,10 @@ footer p{font-size:.85rem}
         <li><a href="index.html#education">Education</a></li>
         <li><a href="index.html#certifications">Certifications</a></li>
         <li><a href="index.html#contact">Contact</a></li>
+        <li><a class="nav-cta" href="Karthikeyan-K-U-Resume.pdf" target="_blank" rel="noopener">
+          Download Resume
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        </a></li>
       </ul>
     </nav>
     <div class="nav-actions">
@@ -298,12 +338,13 @@ footer p{font-size:.85rem}
 <footer class="site-footer">
   <div class="container footer-grid">
     <div>
-      <div class="footer-logo">Karthikeyan<span>.</span>KU</div>
+      <div class="footer-logo"><span>K</span><span>U</span></div>
+      <p>Emerging Software Engineer focused on front-end development, Java, Python, UI/UX, and data-driven applications.</p>
       <p>© <span id="year">2026</span> Karthikeyan K U. Built with HTML, CSS &amp; JavaScript.</p>
     </div>
     <ul class="footer-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="index.html#projects">Featured</a></li>
+      <li><a href="https://github.com/Karthikeyan-k-u" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/karthikeyan-k-u-689858386/" target="_blank" rel="noopener">LinkedIn</a></li>
       <li><a href="Karthikeyan-K-U-Resume.pdf" target="_blank" rel="noopener">Resume</a></li>
       <li><a href="index.html#contact">Contact</a></li>
     </ul>
@@ -464,6 +505,68 @@ footer p{font-size:.85rem}
 
   /* footer year */
   $("year").textContent = new Date().getFullYear();
+})();
+</script>
+
+<!-- ================= Custom cursor ================= -->
+<div class="cursor-glow" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+
+<script>
+/* ---------- custom cursor: violet glow + ring ---------- */
+(function () {
+  if ((window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) ||
+      (window.matchMedia && matchMedia("(pointer: coarse)").matches) ||
+      navigator.maxTouchPoints > 0 || "ontouchstart" in window) return;
+
+  var glow = document.querySelector(".cursor-glow");
+  var ring = document.querySelector(".cursor-ring");
+  if (!glow || !ring) return;
+
+  var HOVER = "a, button, input, textarea, select, [role='button'], .project-card, .cert-card";
+  var mX = -9999, mY = -9999, gX = -9999, gY = -9999, rX = -9999, rY = -9999;
+  var scale = 1, target = 1, hovering = false, active = false;
+
+  window.addEventListener("mousemove", function (e) {
+    mX = e.clientX; mY = e.clientY;
+    if (!active) {
+      active = true;
+      gX = rX = mX; gY = rY = mY;
+      glow.classList.add("is-on");
+      ring.classList.add("is-on");
+    }
+  }, { passive: true });
+
+  document.addEventListener("mouseleave", function () {
+    active = false;
+    glow.classList.remove("is-on");
+    ring.classList.remove("is-on");
+  });
+
+  document.addEventListener("mouseover", function (e) {
+    if (e.target.closest && e.target.closest(HOVER)) { hovering = true; target = 1.6; }
+  });
+
+  document.addEventListener("mouseout", function (e) {
+    if (e.target.closest && e.target.closest(HOVER)) { hovering = false; target = 1; }
+  });
+
+  window.addEventListener("mousedown", function () { target = 0.75; });
+  window.addEventListener("mouseup", function () { target = hovering ? 1.6 : 1; });
+
+  function tick() {
+    if (active) {
+      gX += (mX - gX) * 0.08;
+      gY += (mY - gY) * 0.08;
+      rX += (mX - rX) * 0.35;
+      rY += (mY - rY) * 0.35;
+      scale += (target - scale) * 0.2;
+      glow.style.transform = "translate3d(" + gX + "px," + gY + "px,0) translate(-50%,-50%)";
+      ring.style.transform = "translate3d(" + rX + "px," + rY + "px,0) translate(-50%,-50%) scale(" + scale + ")";
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
 })();
 </script>
 </body>

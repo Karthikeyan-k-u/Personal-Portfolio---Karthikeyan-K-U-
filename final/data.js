@@ -110,6 +110,14 @@ window.PORTFOLIO = {
       tag: "Currently Pursuing",
     },
     {
+      degree: "BS in Data Science and Applications",
+      institution: "Indian Institute of Technology Madras",
+      years: "Currently Pursuing",
+      location: "Chennai, India",
+      meta: "",
+      tag: "",
+    },
+    {
       degree: "Class XII (Higher Secondary)",
       institution: "Dr. Gurusamy Mudaliar T.T.V Higher Secondary School",
       years: "2024 – 2025",
