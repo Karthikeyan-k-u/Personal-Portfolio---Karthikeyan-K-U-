@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./final/og-image.png" alt="Karthikeyan K U Portfolio Preview" width="100%">
+<img src="./react/public/og-image.png" alt="Karthikeyan K U Portfolio Preview" width="100%">
 
 Karthikeyan K U — Personal Portfolio
 
@@ -190,8 +190,6 @@ Personal-Portfolio---Karthikeyan-K-U-/
 │   │   └── main.jsx       # entry point
 │   ├── index.html
 │   └── package.json
-│
-├── final/                 # original static HTML version (legacy)
 │
 └── README.md
 

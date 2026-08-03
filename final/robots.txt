@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://portfolio-karthikeyan-k-u.pages.dev/sitemap.xml
