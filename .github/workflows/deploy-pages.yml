@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - "final/**"
+      - "react/**"
       - ".github/workflows/deploy-pages.yml"
   workflow_dispatch:
 
@@ -26,18 +26,33 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
 
-      - name: Verify deployment directory
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: react/package-lock.json
+
+      - name: Install dependencies
+        working-directory: react
+        run: npm ci
+
+      - name: Build React app
+        working-directory: react
+        run: npm run build
+
+      - name: Verify build output
         shell: bash
         run: |
-          test -d final
-          test -f final/index.html
-          test -f final/og-image.png
-          echo "Deployment directory verified."
+          test -d react/dist
+          test -f react/dist/index.html
+          test -f react/dist/og-image.png
+          echo "Build output verified."
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy final --project-name=portfolio-karthikeyan-k-u --branch=main
+          command: pages deploy react/dist --project-name=portfolio-karthikeyan-k-u --branch=main
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}

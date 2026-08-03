@@ -142,17 +142,25 @@ Technology
 
 Purpose
 
-HTML5
+React 18
 
-Website structure and semantic content
+UI components and interactivity
+
+Vite
+
+Development server, bundling, and build tooling
+
+React Router
+
+Client-side routing between the home page and project archive
 
 CSS3
 
 Styling, responsive layout, animations, and visual effects
 
-JavaScript
+JavaScript (ES Modules)
 
-Interactivity, filtering, search, navigation, and dynamic behaviour
+Component logic, filtering, search, navigation, and dynamic behaviour
 
 Responsive Web Design
 
@@ -170,14 +178,20 @@ Project Structure
 
 Personal-Portfolio---Karthikeyan-K-U-/
 │
-├── final/
+├── react/
+│   ├── public/            # images, favicons, resume PDF, SPA redirect
+│   ├── src/
+│   │   ├── components/    # Navbar, Footer, ProjectCard, cursor, chrome
+│   │   ├── sections/      # Home page sections (Hero, About, Skills, …)
+│   │   ├── pages/         # Home and Projects routes
+│   │   ├── lib/           # icon library, reveal + theme hooks
+│   │   ├── data.js        # all portfolio content
+│   │   ├── App.jsx        # routes and layout
+│   │   └── main.jsx       # entry point
 │   ├── index.html
-│   ├── projects.html
-│   ├── profile-about.jpg
-│   ├── og-image.png
-│   ├── favicon.ico
-│   ├── favicon.png
-│   └── resume PDF
+│   └── package.json
+│
+├── final/                 # original static HTML version (legacy)
 │
 └── README.md
 
@@ -193,27 +207,31 @@ git clone https://github.com/Karthikeyan-k-u/Personal-Portfolio---Karthikeyan-K-
 
 cd Personal-Portfolio---Karthikeyan-K-U-
 
-3. Open the website folder
+3. Open the React app folder
 
-cd final
+cd react
 
-4. Run the website
+4. Install dependencies
 
-Open index.html directly in a browser, or use the Live Server extension in Visual Studio Code.
+npm install
 
-Using VS Code Live Server is recommended because it provides automatic browser refresh while editing.
+5. Run the development server
+
+npm run dev
+
+Open the printed URL in your browser. Vite provides hot reload while editing.
+
+Production build
+
+npm run build
+
+The compiled site is written to react/dist and can be previewed with npm run preview.
 
 Deployment
 
 The portfolio is deployed using Cloudflare Pages.
 
-Cloudflare Pages deployment settings
-
-Framework preset: None
-Build command: Leave empty
-Build output directory: final
-
-After connecting the GitHub repository to Cloudflare Pages, every new push to the main branch can automatically trigger a fresh deployment.
+A GitHub Actions workflow (.github/workflows/deploy-pages.yml) installs the React dependencies, builds the app with Vite, and deploys react/dist directly to Cloudflare Pages. Every push to the main branch touching react/** triggers a fresh deployment.
 
 Responsive Design
 
