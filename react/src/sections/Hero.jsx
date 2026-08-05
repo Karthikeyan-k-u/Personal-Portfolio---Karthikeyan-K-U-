@@ -16,11 +16,13 @@ export default function Hero() {
           <Reveal>
             <span className="eyebrow">Mass Web Designer</span>
             <h1>Karthikeyan<span className="text-gradient"> K U</span></h1>
-            <div className="subtitle">Emerging Software Engineer &amp; Front-End Developer</div>
+            <div className="subtitle">Web Development Intern — ATC Travelzone</div>
             <p className="intro">
-              I build responsive and user-focused digital products using JavaScript, React, Java, Python,
-              Supabase, and modern web technologies. I am pursuing Computer Science and Engineering alongside
-              the BS in Data Science and Applications at IIT Madras.
+              I am currently working as a Web Development Intern at ATC Travelzone, building a
+              full-stack travel booking platform with React, TypeScript, TanStack Start, and Supabase.
+              I also craft responsive, user-focused products using JavaScript, Java, and Python, while
+              pursuing Computer Science and Engineering alongside the BS in Data Science and
+              Applications at IIT Madras.
             </p>
             <div className="hero-ctas">
               <a className="btn btn-primary" href="#projects">

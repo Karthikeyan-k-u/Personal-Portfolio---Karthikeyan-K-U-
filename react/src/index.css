@@ -497,6 +497,7 @@ html[data-theme="light"] .theme-toggle .icon-moon{display:block}
   opacity:.55;
 }
 .about-tags{display:flex;flex-wrap:wrap;gap:10px}
+.about-media .about-tags{margin-top:22px;justify-content:center}
 @media(max-width:900px){
   .about-grid{grid-template-columns:1fr;gap:56px}
   .about-media{max-width:320px;margin:0 auto;justify-self:center}

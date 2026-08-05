@@ -9,6 +9,13 @@ export default function About() {
             <div className="about-frame">
               <img src="/profile-about.jpg" alt="Portrait of Karthikeyan K U" width="480" height="600" loading="lazy" />
             </div>
+            <div className="about-tags">
+              <span className="chip">B.E. Computer Science and Engineering</span>
+              <span className="chip">BS in Data Science and Applications — IIT Madras</span>
+              <span className="chip">Web Development Intern — ATC Travelzone</span>
+              <span className="chip">Chennai, Tamil Nadu</span>
+              <span className="chip">Open to Opportunities</span>
+            </div>
           </Reveal>
           <Reveal className="about-copy">
             <span className="eyebrow">About Me</span>
@@ -43,14 +50,6 @@ export default function About() {
               I am open to internships, collaborative projects, and professional opportunities in software
               engineering, front-end development, Java, Python, UI/UX, and data science.
             </p>
-            <div className="about-divider" aria-hidden="true"></div>
-            <div className="about-tags">
-              <span className="chip">B.E. Computer Science and Engineering</span>
-              <span className="chip">BS in Data Science and Applications — IIT Madras</span>
-              <span className="chip">Web Development Intern — ATC Travelzone</span>
-              <span className="chip">Chennai, Tamil Nadu</span>
-              <span className="chip">Open to Opportunities</span>
-            </div>
           </Reveal>
         </div>
       </div>
