@@ -11,7 +11,6 @@ on:
 
 permissions:
   contents: read
-  deployments: write
 
 concurrency:
   group: cloudflare-pages-production
@@ -54,12 +53,12 @@ jobs:
           test -f react/dist/og-image.png
           echo "Build output verified."
 
-      - name: Test Cloudflare Pages deployment
-        working-directory: react
-        run: |
-          npx wrangler pages deploy dist \
-            --project-name=portfolio-karthikeyan-k-u \
-            --branch=main
+      - name: Deploy to Cloudflare Pages
+        shell: bash
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          npx --yes wrangler@4.120.0 pages deploy react/dist \
+            --project-name=portfolio-karthikeyan-k-u \
+            --branch=main
