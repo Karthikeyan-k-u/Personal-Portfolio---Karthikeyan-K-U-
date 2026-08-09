@@ -27,11 +27,16 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
-          node-version: 20
+          node-version: 24
           cache: npm
           cache-dependency-path: react/package-lock.json
+
+      - name: Show Node.js version
+        run: |
+          node --version
+          npm --version
 
       - name: Install dependencies
         working-directory: react
@@ -54,5 +59,6 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: "4"
           command: pages deploy react/dist --project-name=portfolio-karthikeyan-k-u --branch=main
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
