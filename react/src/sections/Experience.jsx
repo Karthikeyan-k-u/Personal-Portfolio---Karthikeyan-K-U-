@@ -21,12 +21,11 @@ export default function Experience() {
             <Reveal className="tl-item" key={i}>
               <span className="tl-dot" aria-hidden="true"></span>
               <div className="tl-card">
-                <div className="tl-top">
-                  <span className="tl-role">{exp.role}</span>
-                  <span className="tl-date">
-                    {exp.current ? "Currently Interning · " : ""}{exp.date}
-                  </span>
-                </div>
+<div className="tl-top">
+  <span className="tl-role">{exp.role}</span>
+  <span className="tl-badge">{exp.current ? "Current" : ""}</span>
+  <span className="tl-date">{exp.date}</span>
+</div>
                 <div className="tl-org">{exp.org}</div>
 
                 <div className="exp-highlights">

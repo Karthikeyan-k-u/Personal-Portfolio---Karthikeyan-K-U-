@@ -6,6 +6,10 @@ export default function About() {
       <div className="container">
         <div className="about-grid">
           <Reveal className="about-media">
+            <div className="avail-pill" aria-label="Availability">
+              <span className="avail-dot"></span>
+              Open to Opportunities
+            </div>
             <div className="about-frame">
               <img src="/profile-about.jpg" alt="Portrait of Karthikeyan K U" width="480" height="600" loading="lazy" />
             </div>

@@ -34,11 +34,12 @@ export const experience = [
     summary:
       "Single-handedly building and maintaining a full-stack travel booking platform from the ground up — covering the customer-facing website, dynamic content pages, and a complete admin CMS. Balancing this real-world development role alongside a dual-degree program (B.E. CSE + IIT Madras).",
     highlights: [
-      { label: "Pages Built", value: "5+", icon: "layers" },
-      { label: "Full-Stack CMS", value: "Admin", icon: "terminal" },
-      { label: "Real-Time Sync", value: "Live", icon: "database" },
-      { label: "Cloudflare Deployed", value: "99.9%", icon: "rocket" },
-    ],
+    { label: "Web Engineer", value: "Now", icon: "code" },
+    { label: "Full-Stack CMS", value: "Admin", icon: "terminal" },
+    { label: "Real-Time Sync", value: "Live", icon: "database" },
+    { label: "Admin Panel", value: "In Progress", icon: "terminal" },
+    { label: "Deployed on", value: "Linux", icon: "rocket" },
+  ],
     tech: [
       "React",
       "TanStack Start",
@@ -146,10 +147,10 @@ export const education = [
   {
     degree: "BS in Data Science and Applications",
     institution: "Indian Institute of Technology Madras",
-    years: "Currently Pursuing",
+    years: "",
     location: "Chennai, India",
     meta: "",
-    tag: "",
+    tag: "Currently Pursuing",
   },
   {
     degree: "Class XII (Higher Secondary)",
