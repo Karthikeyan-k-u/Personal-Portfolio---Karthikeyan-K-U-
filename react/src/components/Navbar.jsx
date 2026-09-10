@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Icon from "../lib/icons";
 
@@ -15,10 +15,28 @@ const NAV_LINKS = [
 
 export default function Navbar({ toggleTheme }) {
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("");
   const location = useLocation();
   const onHome = location.pathname === "/";
 
   const close = () => setOpen(false);
+
+  useEffect(() => {
+    if (!onHome) return;
+    const sections = NAV_LINKS.map((l) => document.getElementById(l.id)).filter(Boolean);
+    if (sections.length === 0) return;
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      },
+      { rootMargin: "-38% 0px -55% 0px", threshold: 0 }
+    );
+    sections.forEach((s) => io.observe(s));
+    return () => io.disconnect();
+  }, [onHome]);
 
   return (
     <header className="site-header">
@@ -31,7 +49,14 @@ export default function Navbar({ toggleTheme }) {
             {NAV_LINKS.map((l) => (
               <li key={l.id}>
                 {onHome ? (
-                  <a href={`#${l.id}`} onClick={close}>{l.label}</a>
+                  <a
+                    href={`#${l.id}`}
+                    className={active === l.id ? "active" : ""}
+                    aria-current={active === l.id ? "true" : undefined}
+                    onClick={close}
+                  >
+                    {l.label}
+                  </a>
                 ) : (
                   <Link to={`/#${l.id}`} onClick={close}>{l.label}</Link>
                 )}

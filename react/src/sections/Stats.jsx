@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Icon from "../lib/icons";
+import useGithubRepos from "../lib/useGithubRepos";
 import { stats as STATS } from "../data";
 
 function CountUp({ target }) {
@@ -46,14 +47,7 @@ function CountUp({ target }) {
 }
 
 export default function Stats() {
-  const [repoCount, setRepoCount] = useState(null);
-
-  useEffect(() => {
-    fetch("https://api.github.com/users/Karthikeyan-k-u/repos?per_page=100")
-      .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
-      .then((repos) => setRepoCount(repos.length))
-      .catch(() => {});
-  }, []);
+  const repoCount = useGithubRepos();
 
   return (
     <section className="stats-band" aria-label="Highlights">

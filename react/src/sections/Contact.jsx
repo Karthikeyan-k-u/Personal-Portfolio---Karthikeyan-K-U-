@@ -6,36 +6,47 @@ import { social } from "../data";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+const VALIDATORS = {
+  name: (v) => (v.trim() ? "" : "Please enter your name."),
+  email: (v) => (v.trim() ? (EMAIL_RE.test(v.trim()) ? "" : "Please enter a valid email address.") : "Please enter your email."),
+  subject: (v) => (v.trim() ? "" : "Please add a subject."),
+  message: (v) => (v.trim() ? "" : "Please write a message."),
+};
+
 export default function Contact() {
   const [fields, setFields] = useState({ name: "", email: "", subject: "", message: "" });
+  const [errors, setErrors] = useState({});
   const [msg, setMsg] = useState(null);
+  const [sending, setSending] = useState(false);
 
-  const set = (key) => (e) => setFields((f) => ({ ...f, [key]: e.target.value }));
+  const set = (key) => (e) => {
+    const value = e.target.value;
+    setFields((f) => ({ ...f, [key]: value }));
+    setErrors((err) => ({ ...err, [key]: VALIDATORS[key](value) }));
+  };
 
   function onSubmit(e) {
     e.preventDefault();
-    const { name, email, subject, message } = fields;
-    const trimmed = {
-      name: name.trim(),
-      email: email.trim(),
-      subject: subject.trim(),
-      message: message.trim(),
-    };
-
-    if (!trimmed.name || !trimmed.email || !trimmed.subject || !trimmed.message) {
-      setMsg({ type: "err", text: "Please fill in all the fields." });
-      return;
-    }
-    if (!EMAIL_RE.test(trimmed.email)) {
-      setMsg({ type: "err", text: "Please enter a valid email address." });
+    const nextErrors = {};
+    let hasError = false;
+    Object.keys(VALIDATORS).forEach((k) => {
+      const err = VALIDATORS[k](fields[k]);
+      nextErrors[k] = err;
+      if (err) hasError = true;
+    });
+    setErrors(nextErrors);
+    if (hasError) {
+      setMsg({ type: "err", text: "Please fix the highlighted fields below." });
       return;
     }
 
-    const body = `Name: ${trimmed.name}\nEmail: ${trimmed.email}\n\nMessage:\n${trimmed.message}`;
-    const mailto = `mailto:${social.email}?subject=${encodeURIComponent(trimmed.subject)}&body=${encodeURIComponent(body)}`;
+    const body = `Name: ${fields.name.trim()}\nEmail: ${fields.email.trim()}\n\nMessage:\n${fields.message.trim()}`;
+    const mailto = `mailto:${social.email}?subject=${encodeURIComponent(fields.subject.trim())}&body=${encodeURIComponent(body)}`;
+    setSending(true);
     setMsg({ type: "ok", text: "Opening your email app…" });
     window.location.href = mailto;
     setTimeout(() => {
+      setSending(false);
       setMsg({ type: "ok", text: `Didn't open? Email me directly at ${social.email}.` });
     }, 6000);
   }
@@ -84,25 +95,70 @@ export default function Contact() {
           </Reveal>
           <Reveal as="form" className="contact-form" onSubmit={onSubmit} noValidate>
             <div className="form-row">
-              <div className="field">
+              <div className={`field${errors.name ? " err" : ""}`}>
                 <label htmlFor="cName">Name</label>
-                <input type="text" id="cName" name="name" placeholder="Your name" required autoComplete="name" value={fields.name} onChange={set("name")} />
+                <input
+                  type="text"
+                  id="cName"
+                  name="name"
+                  placeholder="Your name"
+                  required
+                  autoComplete="name"
+                  aria-invalid={errors.name ? "true" : undefined}
+                  aria-describedby={errors.name ? "cNameErr" : undefined}
+                  value={fields.name}
+                  onChange={set("name")}
+                />
+                {errors.name ? <span className="field-err" id="cNameErr">{errors.name}</span> : null}
               </div>
-              <div className="field">
+              <div className={`field${errors.email ? " err" : ""}`}>
                 <label htmlFor="cEmail">Email</label>
-                <input type="email" id="cEmail" name="email" placeholder="you@example.com" required autoComplete="email" value={fields.email} onChange={set("email")} />
+                <input
+                  type="email"
+                  id="cEmail"
+                  name="email"
+                  placeholder="you@example.com"
+                  required
+                  autoComplete="email"
+                  aria-invalid={errors.email ? "true" : undefined}
+                  aria-describedby={errors.email ? "cEmailErr" : undefined}
+                  value={fields.email}
+                  onChange={set("email")}
+                />
+                {errors.email ? <span className="field-err" id="cEmailErr">{errors.email}</span> : null}
               </div>
             </div>
-            <div className="field">
+            <div className={`field${errors.subject ? " err" : ""}`}>
               <label htmlFor="cSubject">Subject</label>
-              <input type="text" id="cSubject" name="subject" placeholder="What's this about?" required value={fields.subject} onChange={set("subject")} />
+              <input
+                type="text"
+                id="cSubject"
+                name="subject"
+                placeholder="What's this about?"
+                required
+                aria-invalid={errors.subject ? "true" : undefined}
+                aria-describedby={errors.subject ? "cSubjectErr" : undefined}
+                value={fields.subject}
+                onChange={set("subject")}
+              />
+              {errors.subject ? <span className="field-err" id="cSubjectErr">{errors.subject}</span> : null}
             </div>
-            <div className="field">
+            <div className={`field${errors.message ? " err" : ""}`}>
               <label htmlFor="cMessage">Message</label>
-              <textarea id="cMessage" name="message" placeholder="Write your message…" required value={fields.message} onChange={set("message")}></textarea>
+              <textarea
+                id="cMessage"
+                name="message"
+                placeholder="Write your message…"
+                required
+                aria-invalid={errors.message ? "true" : undefined}
+                aria-describedby={errors.message ? "cMessageErr" : undefined}
+                value={fields.message}
+                onChange={set("message")}
+              ></textarea>
+              {errors.message ? <span className="field-err" id="cMessageErr">{errors.message}</span> : null}
             </div>
-            <button type="submit" className="btn btn-primary" style={{ justifySelf: "start" }}>
-              Send Message
+            <button type="submit" className="btn btn-primary" style={{ justifySelf: "start" }} disabled={sending}>
+              {sending ? "Opening email…" : "Send Message"}
               <Icon name="send" strokeWidth={2} />
             </button>
             <div className={msgClass} role="status">{msg ? msg.text : ""}</div>

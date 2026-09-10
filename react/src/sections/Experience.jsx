@@ -1,7 +1,12 @@
+import { useState } from "react";
 import SectionHead from "../components/SectionHead";
 import Reveal from "../components/Reveal";
+import Icon from "../lib/icons";
+import { experience } from "../data";
 
 export default function Experience() {
+  const [expanded, setExpanded] = useState(false);
+
   return (
     <section className="section section-tight" id="experience">
       <div className="container">
@@ -12,31 +17,78 @@ export default function Experience() {
           sub="A snapshot of the work that shaped how I approach the web."
         />
         <div className="timeline">
-          <Reveal className="tl-item">
-            <span className="tl-dot" aria-hidden="true"></span>
-            <div className="tl-card">
-              <div className="tl-top">
-                <span className="tl-role">Web Development Intern</span>
-                <span className="tl-date">Currently Interning · June 2026 – Present</span>
+          {experience.map((exp, i) => (
+            <Reveal className="tl-item" key={i}>
+              <span className="tl-dot" aria-hidden="true"></span>
+              <div className="tl-card">
+                <div className="tl-top">
+                  <span className="tl-role">{exp.role}</span>
+                  <span className="tl-date">
+                    {exp.current ? "Currently Interning · " : ""}{exp.date}
+                  </span>
+                </div>
+                <div className="tl-org">{exp.org}</div>
+
+                <div className="exp-highlights">
+                  {exp.highlights.map((h, j) => (
+                    <div className="exp-hl" key={j} style={{ animationDelay: `${j * 0.1 + 0.3}s` }}>
+                      <span className="exp-hl-ic"><Icon name={h.icon} size={18} /></span>
+                      <span className="exp-hl-val">{h.value}</span>
+                      <span className="exp-hl-lbl">{h.label}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <p>{exp.summary}</p>
+
+                <div className="exp-tech">
+                  {exp.tech.map((t) => (
+                    <span className="chip" key={t}>{t}</span>
+                  ))}
+                </div>
+
+                <button
+                  className="exp-toggle"
+                  onClick={() => setExpanded((v) => !v)}
+                  aria-expanded={expanded}
+                >
+                  {expanded ? "Hide details" : "Show details"}
+                  <Icon name="chevron-down" size={16} strokeWidth={2} className={expanded ? "rotated" : ""} />
+                </button>
+
+                <div className={`exp-bullets-wrap${expanded ? " open" : ""}`}>
+                  <ul className="tl-list">
+                    {exp.bullets.map((b, j) => (
+                      <li key={j}>{b}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                {exp.link && (
+                  <a
+                    className="exp-live-cta"
+                    href={exp.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <div className="exp-live-cta-left">
+                      <span className="exp-live-cta-icon">
+                        <Icon name="external-link" size={20} />
+                      </span>
+                      <div className="exp-live-cta-info">
+                        <span className="exp-live-cta-label">Live Project</span>
+                        <span className="exp-live-cta-url">{new URL(exp.link).hostname}</span>
+                      </div>
+                    </div>
+                    <span className="exp-live-cta-btn">
+                      Visit Live Site
+                      <Icon name="arrow-up-right" size={16} />
+                    </span>
+                  </a>
+                )}
               </div>
-              <div className="tl-org">ATC Travelzone</div>
-              <p>
-                Currently interning as a Web Development Intern, single-handedly building and
-                maintaining a full-stack travel booking platform from the ground up — covering the
-                customer-facing website, dynamic content pages, and a complete admin CMS. Balancing
-                this real-world development role alongside a dual-degree program (B.E. CSE + IIT
-                Madras), managing hands-on production work, debugging, and academic commitments in
-                parallel.
-              </p>
-              <ul className="tl-list">
-                <li>Built the entire customer-facing website end-to-end — homepage, packages, destinations, activities, offers, reviews, and booking flow — using React, TanStack Start, TypeScript, and Tailwind CSS.</li>
-                <li>Designed and developed a full admin CMS panel from scratch: CRUD modules for Bookings, Packages, Destinations, Website Content, Payments, and Settings — including media upload, image preview, and delete-confirmation safeguards.</li>
-                <li>Integrated Supabase as the backend, connecting live data across public pages and admin panel with real-time sync.</li>
-                <li>Identified and resolved numerous bugs and edge cases across the site — from broken layouts to data sync issues — bringing the platform to a stable, professional, production-ready state.</li>
-                <li>Deployed and maintained the live site on Cloudflare Pages, ensuring performance and uptime.</li>
-              </ul>
-            </div>
-          </Reveal>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>
