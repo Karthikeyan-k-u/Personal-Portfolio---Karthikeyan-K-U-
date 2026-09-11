@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./react/public/og-image.png" alt="Karthikeyan K U Portfolio Preview" width="100%">
+
 
 Karthikeyan K U — Personal Portfolio
 
