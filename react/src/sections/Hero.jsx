@@ -16,13 +16,12 @@ export default function Hero() {
       <div className="container">
         <div className="hero-grid">
           <Reveal>
+            <span className="eyebrow">Mass Web Designer</span>
+            <h1>Karthikeyan<span className="text-gradient"> K U</span></h1>
             <div className="avail-pill" aria-label="Availability">
               <span className="avail-dot"></span>
               Open to Opportunities
             </div>
-            <span className="eyebrow">Web Designer</span>
-            <h1>Karthikeyan<span className="text-gradient"> K U</span></h1>
-            <div className="subtitle">Web Development Intern — ATC Travelzone</div>
             <p className="intro">
               I'm a software engineering student — B.E. CSE plus a BS in Data Science from IIT Madras — currently interning as a Web Development Intern at ATC Travelzone, building and maintaining a live travel booking platform.
               Using React, TypeScript, TanStack, Tailwind, Shadcn UI, Supabase, and Cloudflare Pages, I ship the customer site, a full admin CMS, and the deployment pipeline, focused on fast, intuitive front-end and UI/UX. I've also built responsive websites, admin dashboards, Java systems, and Python apps, and hold NPTEL Elite &amp; Silver plus Java, Python, Responsive Web Design, UX, Cloud, and AI certifications. I'm committed to continuous learning and becoming a well-rounded software engineer — open to internships, collaborative projects, and opportunities in software engineering, front-end, Java, Python, UI/UX, and data science.
