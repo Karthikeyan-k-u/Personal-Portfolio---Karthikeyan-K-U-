@@ -1,7 +1,3 @@
-<div align="center">
-
-
-
 Karthikeyan K U — Personal Portfolio
 
 Emerging Software Engineer · Front-End Developer · UI/UX Enthusiast
