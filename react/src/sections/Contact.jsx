@@ -52,7 +52,11 @@ export default function Contact() {
         setFields({ name: "", email: "", subject: "", message: "" });
         setErrors({});
       } else {
-        setMsg({ type: "err", text: `${data.message || "Something went wrong."} You can also email me directly at ${contactEmail}.` });
+        const activation = typeof data.message === "string" && /activ/i.test(data.message);
+        const text = activation
+          ? `The form isn't ready yet — please email me directly at ${contactEmail}.`
+          : `${data.message || "Something went wrong."} You can also email me directly at ${contactEmail}.`;
+        setMsg({ type: "err", text });
       }
     } catch {
       setMsg({ type: "err", text: `Couldn't send right now. Please email me directly at ${contactEmail}.` });
@@ -200,7 +204,6 @@ export default function Contact() {
               <Icon name="send" strokeWidth={2} />
             </button>
             <div className={msgClass} role="status">{msg ? msg.text : ""}</div>
-            <p style={{ fontSize: ".8rem" }}>Your message is delivered securely to my inbox.</p>
           </Reveal>
         </div>
       </div>
