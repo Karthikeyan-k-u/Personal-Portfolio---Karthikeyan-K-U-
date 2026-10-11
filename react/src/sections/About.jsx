@@ -26,7 +26,7 @@ export default function About() {
                 NPTEL Elite &amp; Silver
               </span>
               <span className="about-float f3">
-                <strong>8.21</strong> CGPA
+                <strong>8.64</strong> CGPA
               </span>
             </div>
             <div className="about-tags">

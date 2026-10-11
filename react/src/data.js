@@ -136,14 +136,14 @@ export const achievements = [
   },
 ];
 
-/* Education — one consistent CGPA value (8.21) everywhere */
+/* Education — one consistent CGPA value (8.64) everywhere */
 export const education = [
   {
     degree: "B.E. Computer Science & Engineering",
     institution: "Prince Dr. K. Vasudevan College of Engineering",
     years: "2025 – 2029",
     location: "Chennai, India",
-    meta: "CGPA: 8.21",
+    meta: "CGPA: 8.64",
     tag: "Currently Pursuing",
   },
   {

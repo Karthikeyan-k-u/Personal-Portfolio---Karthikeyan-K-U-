@@ -74,7 +74,7 @@ button{font-family:inherit;cursor:pointer}
 ::selection{background:var(--primary-strong);color:#fff}
 :focus-visible{outline:2px solid var(--ring);outline-offset:3px;border-radius:4px}
 
-.container{max-width:1140px;margin:0 auto;padding:0 24px;width:100%}
+.container{max-width:1280px;margin:0 auto;padding:0 clamp(20px,3vw,40px);width:100%}
 .section{padding:96px 0;position:relative}
 .section-tight{padding:64px 0}
 
@@ -356,6 +356,7 @@ html[data-theme="light"] .theme-toggle .icon-moon{display:block}
    Hero
    ============================================================ */
 .hero{padding:96px 0 84px;position:relative;overflow:hidden;min-height:100dvh;display:flex;flex-direction:column;justify-content:center}
+.hero .container{max-width:1360px}
 .hero::after{
   content:"";
   position:absolute;
@@ -367,8 +368,8 @@ html[data-theme="light"] .theme-toggle .icon-moon{display:block}
 }
 .hero-grid{
   display:grid;
-  grid-template-columns:1.25fr .75fr;
-  gap:60px;
+  grid-template-columns:1.1fr .9fr;
+  gap:clamp(40px,5vw,72px);
   align-items:center;
 }
 .hero h1{
@@ -401,7 +402,7 @@ html[data-theme="light"] .theme-toggle .icon-moon{display:block}
   align-items:center;
   gap:14px;
   min-height:2.5em;
-  max-width:640px;
+  max-width:720px;
   margin-bottom:30px;
   font-family:var(--font-heading);
   font-size:clamp(1.02rem,2.5vw,1.4rem);
@@ -521,8 +522,8 @@ html[data-theme="light"] .theme-toggle .icon-moon{display:block}
 
 .hero-visual{position:relative;justify-self:center}
 .hero-visual .img-ring{
-  width:min(360px,78vw);
-  height:min(360px,78vw);
+  width:min(400px,80vw);
+  height:min(400px,80vw);
   border-radius:50%;
   padding:10px;
   background:var(--gradient);
@@ -622,17 +623,6 @@ html[data-theme="light"] .theme-toggle .icon-moon{display:block}
    ============================================================ */
 .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
 .about-media{position:relative;max-width:430px;justify-self:end}
-.about-media::before{
-  content:"";
-  position:absolute;
-  inset:-16px;
-  border-radius:32px;
-  border:1px solid var(--border);
-  z-index:-1;
-  transform:rotate(-2.5deg);
-  transition:transform .3s ease;
-}
-.about-media:hover::before{transform:rotate(-1deg)}
 .about-photo{position:relative;margin-bottom:22px}
 .about-glow{
   position:absolute;
