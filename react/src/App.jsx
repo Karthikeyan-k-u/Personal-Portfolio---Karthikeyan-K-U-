@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ScrollChrome from "./components/ScrollChrome";
 import CustomCursor from "./components/CustomCursor";
+import Background from "./components/Background";
 import useTheme from "./lib/useTheme";
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
@@ -30,6 +31,7 @@ export default function App() {
     <>
       <ScrollManager />
       <ScrollChrome />
+      <Background />
       <CustomCursor />
       <a className="skip-link" href="#main">Skip to content</a>
       <Navbar toggleTheme={toggle} />

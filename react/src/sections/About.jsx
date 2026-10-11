@@ -34,7 +34,6 @@ export default function About() {
               <span className="chip">BS in Data Science and Applications — IIT Madras</span>
               <span className="chip">Web Development Intern — ATC Travelzone</span>
               <span className="chip">Chennai, Tamil Nadu</span>
-              <span className="chip">Open to Opportunities</span>
             </div>
           </Reveal>
           <Reveal className="about-copy">

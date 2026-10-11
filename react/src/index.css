@@ -67,6 +67,65 @@ body::before{
     radial-gradient(700px 500px at 60% 110%,rgba(217,70,239,.10),transparent 60%);
   pointer-events:none;
 }
+/* Aurora background — mouse-parallax depth layers (see components/Background.jsx) */
+.bg-aurora{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  overflow:hidden;
+  pointer-events:none;
+}
+.orb-layer{
+  position:absolute;
+  inset:-12%;
+  will-change:transform;
+}
+.orb{
+  position:absolute;
+  border-radius:50%;
+  opacity:.55;
+  animation:orbDrift 34s ease-in-out infinite alternate;
+}
+.orb-1{
+  width:46vw;height:46vw;top:-14%;left:-10%;
+  background:radial-gradient(circle,rgba(124,58,237,.55),transparent 68%);
+  animation-duration:40s;
+}
+.orb-2{
+  width:40vw;height:40vw;top:6%;right:-12%;
+  background:radial-gradient(circle,rgba(168,85,247,.46),transparent 68%);
+  animation-duration:32s;
+  animation-delay:-6s;
+}
+.orb-3{
+  width:46vw;height:46vw;bottom:-18%;left:16%;
+  background:radial-gradient(circle,rgba(217,70,239,.34),transparent 70%);
+  animation-duration:36s;
+  animation-delay:-12s;
+}
+.orb-4{
+  width:30vw;height:30vw;bottom:4%;right:6%;
+  background:radial-gradient(circle,rgba(99,102,241,.30),transparent 70%);
+  animation-duration:28s;
+  animation-delay:-3s;
+}
+.bg-vignette{
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 50% 38%,transparent 34%,rgba(8,6,15,.62) 100%);
+}
+@keyframes orbDrift{
+  0%{transform:translate3d(0,0,0) scale(1)}
+  50%{transform:translate3d(3%,-2.5%,0) scale(1.08)}
+  100%{transform:translate3d(-2.5%,3%,0) scale(.94)}
+}
+html[data-theme="light"] .orb{opacity:.42}
+html[data-theme="light"] .bg-vignette{
+  background:radial-gradient(circle at 50% 38%,transparent 36%,rgba(247,245,252,.55) 100%);
+}
+@media (prefers-reduced-motion:reduce){
+  .orb{animation:none}
+}
 a{color:var(--primary);text-decoration:none}
 a:hover{color:var(--primary-strong)}
 img{max-width:100%;display:block}
