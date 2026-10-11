@@ -2,23 +2,25 @@ import Icon from "../lib/icons";
 import Reveal from "../components/Reveal";
 import RoleRotator from "../components/RoleRotator";
 import useTilt from "../lib/useTilt";
+import usePointerParallax from "../lib/usePointerParallax";
 import useGithubRepos from "../lib/useGithubRepos";
-import { social, resume, heroStats } from "../data";
+import { social, resume } from "../data";
 
 export default function Hero() {
   const repoCount = useGithubRepos();
   const tiltRef = useTilt(10);
+  const nebulaRef = usePointerParallax(26, 1.1);
   const heroSocials = [
     { key: "github", url: social.github, label: "GitHub profile" },
     { key: "linkedin", url: social.linkedin, label: "LinkedIn profile" },
     { key: "email", url: `mailto:${social.email}`, label: "Send email" },
   ];
 
-  const statsList = [...heroStats];
-  if (repoCount != null) statsList.push(`${repoCount}+ GitHub Repos`);
-
   return (
     <section className="hero" id="home">
+      <div className="hero-nebula" aria-hidden="true">
+        <span className="nebula-layer" ref={nebulaRef} />
+      </div>
       <div className="container">
         <div className="hero-grid">
           <Reveal>
@@ -39,11 +41,6 @@ export default function Hero() {
                 Resume
               </a>
             </div>
-            <ul className="hero-stats" aria-label="Highlights">
-              {statsList.map((stat) => (
-                <li key={stat} className="hstat">{stat}</li>
-              ))}
-            </ul>
             <div className="hero-socials" aria-label="Social links">
               {heroSocials.map((s) => (
                 <a key={s.key} href={s.url} target="_blank" rel="noopener" aria-label={s.label}>

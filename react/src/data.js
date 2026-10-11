@@ -16,14 +16,6 @@ export const contactEmail = "karthikeyan.k.u.777@gmail.com";
 
 export const resume = "Karthikeyan-K-U-Resume.pdf";
 
-/* Hero quick-stat chips (repos count is appended dynamically in Hero) */
-export const heroStats = [
-  "B.E. CSE · Prince College",
-  "BS DS&A · IIT Madras",
-  "8.64 CGPA",
-  "NPTEL Elite & Silver",
-];
-
 /* Homepage statistic strip (truthful data only) */
 export const stats = [
   { value: "1", suffix: "", label: "Industry Internship", icon: "briefcase" },

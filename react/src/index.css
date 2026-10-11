@@ -174,6 +174,7 @@ body::before{
 
 html[data-theme="light"] .orb{opacity:.4}
 html[data-theme="light"] .aurora-curtain{opacity:.38}
+html[data-theme="light"] .nebula-layer{opacity:.42;mix-blend-mode:normal}
 html[data-theme="light"] .star{background:#4c1d95;opacity:.5}
 html[data-theme="light"] .ring{border-color:rgba(124,58,237,.3);box-shadow:0 0 30px rgba(124,58,237,.14)}
 html[data-theme="light"] .bg-grain{mix-blend-mode:multiply;opacity:.04}
@@ -183,6 +184,7 @@ html[data-theme="light"] .bg-vignette{
 @media (prefers-reduced-motion:reduce){
   .aurora-curtain,.orb,.ring,.star{animation:none!important}
   .stage-conic,.stage-glow,.hero-badge,.tech-badge{animation:none!important}
+  .nebula-layer{transform:scale(1.06)}
 }
 a{color:var(--primary);text-decoration:none}
 a:hover{color:var(--primary-strong)}
@@ -473,7 +475,29 @@ html[data-theme="light"] .theme-toggle .icon-moon{display:block}
    Hero
    ============================================================ */
 .hero{padding:96px 0 84px;position:relative;overflow:hidden;min-height:100dvh;display:flex;flex-direction:column;justify-content:center}
-.hero .container{max-width:1360px}
+.hero .container{max-width:1360px;position:relative;z-index:1}
+
+/* Hero nebula base layer — mouse-parallax 3D depth (sections/Hero.jsx) */
+.hero-nebula{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  overflow:hidden;
+  pointer-events:none;
+}
+.nebula-layer{
+  position:absolute;
+  inset:-8%;
+  display:block;
+  background:url("/hero-nebula.png") center/cover no-repeat;
+  opacity:.9;
+  mix-blend-mode:screen;
+  transform:scale(1.1);
+  transform-origin:50% 40%;
+  will-change:transform;
+  -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 54%,transparent 100%);
+  mask-image:linear-gradient(to bottom,#000 0%,#000 54%,transparent 100%);
+}
 .hero::after{
   content:"";
   position:absolute;
@@ -570,27 +594,6 @@ html[data-theme="light"] .theme-toggle .icon-moon{display:block}
 }
 .hero-socials a:hover{color:var(--primary);border-color:var(--primary);transform:translateY(-3px)}
 .hero-socials svg{width:20px;height:20px}
-
-.hero-stats{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 30px;padding:0;list-style:none}
-.hstat{
-  display:inline-flex;
-  align-items:center;
-  gap:7px;
-  padding:8px 14px;
-  border-radius:999px;
-  background:var(--card);
-  border:1px solid var(--border);
-  font-family:var(--font-heading);
-  font-size:.74rem;
-  font-weight:600;
-  color:var(--muted);
-}
-.hstat::before{
-  content:"";
-  width:6px;height:6px;
-  border-radius:50%;
-  background:var(--gradient);
-}
 
 .avail-pill{
   display:inline-flex;
@@ -761,7 +764,7 @@ html[data-theme="light"] .theme-toggle .icon-moon{display:block}
   .hero .eyebrow::before,.section-head.center .eyebrow::before{display:none}
   .hero p.intro{margin-left:auto;margin-right:auto}
   .hero-rotator{justify-content:center;margin-left:auto;margin-right:auto;min-height:3em}
-  .hero-ctas,.hero-socials,.hero-stats{justify-content:center}
+  .hero-ctas,.hero-socials{justify-content:center}
   .hero-visual{order:-1}
   .hero-scroll{display:none}
 }
