@@ -1,4 +1,5 @@
 import Reveal from "../components/Reveal";
+import Icon from "../lib/icons";
 
 export default function About() {
   return (
@@ -10,8 +11,23 @@ export default function About() {
               <span className="avail-dot"></span>
               Open to Opportunities
             </div>
-            <div className="about-frame">
-              <img src="/profile-about.jpg" alt="Portrait of Karthikeyan K U" width="480" height="600" loading="lazy" />
+            <div className="about-photo">
+              <span className="about-glow" aria-hidden="true"></span>
+              <div className="about-frame">
+                <img src="/profile-about.jpg" alt="Portrait of Karthikeyan K U" width="480" height="600" loading="lazy" />
+                <span className="about-shine" aria-hidden="true"></span>
+              </div>
+              <span className="about-float f1">
+                <Icon name="graduation" strokeWidth={2} />
+                IIT Madras
+              </span>
+              <span className="about-float f2">
+                <Icon name="medal" strokeWidth={2} />
+                NPTEL Elite &amp; Silver
+              </span>
+              <span className="about-float f3">
+                <strong>8.21</strong> CGPA
+              </span>
             </div>
             <div className="about-tags">
               <span className="chip">B.E. Computer Science and Engineering</span>
@@ -22,37 +38,29 @@ export default function About() {
             </div>
           </Reveal>
           <Reveal className="about-copy">
-            <span className="eyebrow">About Me</span>
-            <h2>Turning curiosity into <span className="text-gradient">clean code</span></h2>
+            <span className="eyebrow">Who I Am</span>
+            <h2>About <span className="text-gradient">Me</span></h2>
             <p className="lead">
-              I am an emerging software engineer pursuing a B.E. in Computer Science and Engineering
-              alongside a BS in Data Science and Applications at IIT Madras. My interests lie at the
-              intersection of software engineering, user experience, and data-driven technology.
+              I am an aspiring software engineer pursuing a B.E. in Computer Science and Engineering at
+              Prince College alongside a BS in Data Science and Applications at IIT Madras. I am passionate
+              about building intuitive, responsive, and reliable digital solutions that solve real-world problems.
             </p>
             <p>
-              I have hands-on experience in front-end development, UI/UX design, Java, Python, JavaScript,
-              object-oriented programming, database management, and responsive web application development.
-              I enjoy transforming ideas into functional digital products that are intuitive, reliable,
-              and designed to solve real-world problems.
+              As a <strong className="about-strong">Web Development Intern at ATC TravelZone</strong>, I gain
+              practical experience in developing and maintaining web applications, working on user-facing
+              interfaces, and contributing to travel platform development. My technical interests include
+              front-end development, Java, Python, JavaScript, database management, and UI/UX design.
             </p>
             <p>
-              Through academic, internship, and independent projects, I have built responsive websites,
-              admin dashboards, travel-management platforms, Java-based management systems, Python
-              applications, and interactive web solutions. These experiences have strengthened my skills in
-              problem-solving, software design, debugging, application architecture, and user-centred development.
+              Through my internship, academic work, and independent projects, I continue to strengthen my
+              skills in software development, debugging, and problem-solving. I have also earned an{" "}
+              <strong className="about-strong">NPTEL Elite and Silver certification in Object-Oriented
+              Programming</strong> and completed additional technical certifications.
             </p>
             <p>
-              I hold an NPTEL Elite and Silver certification in Object-Oriented Programming and have
-              completed additional certifications in Java, Python, responsive web design, user experience,
-              cloud technologies, and AI development.
-            </p>
-            <p>
-              I am committed to continuous learning and professional growth, with the goal of becoming a
-              well-rounded software engineer capable of building scalable, efficient, and meaningful digital products.
-            </p>
-            <p>
-              I am open to internships, collaborative projects, and professional opportunities in software
-              engineering, front-end development, Java, Python, UI/UX, and data science.
+              My goal is to grow into a well-rounded software engineer who builds scalable, efficient, and
+              user-focused applications. I am open to internship opportunities, collaborative projects, and
+              roles in software engineering and web development.
             </p>
           </Reveal>
         </div>

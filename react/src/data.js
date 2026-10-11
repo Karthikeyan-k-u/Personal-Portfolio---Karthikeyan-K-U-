@@ -12,6 +12,8 @@ export const social = {
     "https://www.linkedin.com/in/karthikeyan-k-u-689858386/details/certifications/",
 };
 
+export const contactEmail = "karthikeyan.k.u.777@gmail.com";
+
 export const resume = "Karthikeyan-K-U-Resume.pdf";
 
 /* Homepage statistic strip (truthful data only) */

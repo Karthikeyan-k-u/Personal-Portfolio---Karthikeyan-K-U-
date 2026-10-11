@@ -2,9 +2,11 @@ import { useState } from "react";
 import SectionHead from "../components/SectionHead";
 import Reveal from "../components/Reveal";
 import Icon from "../lib/icons";
-import { social } from "../data";
+import { social, contactEmail } from "../data";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const FORMSUBMIT_ENDPOINT = `https://formsubmit.co/ajax/${contactEmail}`;
 
 const VALIDATORS = {
   name: (v) => (v.trim() ? "" : "Please enter your name."),
@@ -18,12 +20,46 @@ export default function Contact() {
   const [errors, setErrors] = useState({});
   const [msg, setMsg] = useState(null);
   const [sending, setSending] = useState(false);
+  const [honeypot, setHoneypot] = useState(false);
 
   const set = (key) => (e) => {
     const value = e.target.value;
     setFields((f) => ({ ...f, [key]: value }));
     setErrors((err) => ({ ...err, [key]: VALIDATORS[key](value) }));
   };
+
+  async function sendMessage() {
+    setSending(true);
+    setMsg({ type: "ok", text: "Sending your message…" });
+    try {
+      const res = await fetch(FORMSUBMIT_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          name: fields.name.trim(),
+          email: fields.email.trim(),
+          subject: fields.subject.trim(),
+          message: fields.message.trim(),
+          _subject: `Portfolio message: ${fields.subject.trim()}`,
+          _template: "table",
+          _captcha: "false",
+          _honey: honeypot ? "bot" : "",
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && String(data.success) === "true") {
+        setMsg({ type: "ok", text: "Thank you! Your message has been sent — I'll get back to you soon." });
+        setFields({ name: "", email: "", subject: "", message: "" });
+        setErrors({});
+      } else {
+        setMsg({ type: "err", text: `${data.message || "Something went wrong."} You can also email me directly at ${contactEmail}.` });
+      }
+    } catch {
+      setMsg({ type: "err", text: `Couldn't send right now. Please email me directly at ${contactEmail}.` });
+    } finally {
+      setSending(false);
+    }
+  }
 
   function onSubmit(e) {
     e.preventDefault();
@@ -40,15 +76,7 @@ export default function Contact() {
       return;
     }
 
-    const body = `Name: ${fields.name.trim()}\nEmail: ${fields.email.trim()}\n\nMessage:\n${fields.message.trim()}`;
-    const mailto = `mailto:${social.email}?subject=${encodeURIComponent(fields.subject.trim())}&body=${encodeURIComponent(body)}`;
-    setSending(true);
-    setMsg({ type: "ok", text: "Opening your email app…" });
-    window.location.href = mailto;
-    setTimeout(() => {
-      setSending(false);
-      setMsg({ type: "ok", text: `Didn't open? Email me directly at ${social.email}.` });
-    }, 6000);
+    sendMessage();
   }
 
   const msgClass = msg ? `form-msg show ${msg.type === "err" ? "err" : "ok"}` : "form-msg";
@@ -68,7 +96,7 @@ export default function Contact() {
               <span className="ic"><Icon name="email" /></span>
               <div>
                 <div className="lbl">Email</div>
-                <a className="val" href={`mailto:${social.email}`}>Email Me</a>
+                <a className="val" href={`mailto:${contactEmail}`}>{contactEmail}</a>
               </div>
             </div>
             <div className="contact-line">
@@ -94,6 +122,16 @@ export default function Contact() {
             </div>
           </Reveal>
           <Reveal as="form" className="contact-form" onSubmit={onSubmit} noValidate>
+            <input
+              type="checkbox"
+              name="_honey"
+              checked={honeypot}
+              onChange={(e) => setHoneypot(e.target.checked)}
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
+            />
             <div className="form-row">
               <div className={`field${errors.name ? " err" : ""}`}>
                 <label htmlFor="cName">Name</label>
@@ -158,11 +196,11 @@ export default function Contact() {
               {errors.message ? <span className="field-err" id="cMessageErr">{errors.message}</span> : null}
             </div>
             <button type="submit" className="btn btn-primary" style={{ justifySelf: "start" }} disabled={sending}>
-              {sending ? "Opening email…" : "Send Message"}
+              {sending ? "Sending…" : "Send Message"}
               <Icon name="send" strokeWidth={2} />
             </button>
             <div className={msgClass} role="status">{msg ? msg.text : ""}</div>
-            <p style={{ fontSize: ".8rem" }}>This form opens your email app to send the message directly to me.</p>
+            <p style={{ fontSize: ".8rem" }}>Your message is delivered securely to my inbox.</p>
           </Reveal>
         </div>
       </div>

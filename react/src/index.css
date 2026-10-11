@@ -90,6 +90,16 @@ button{font-family:inherit;cursor:pointer}
 }
 .skip-link:focus{left:8px}
 
+.sr-only{
+  position:absolute;
+  width:1px;height:1px;
+  padding:0;margin:-1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  white-space:nowrap;
+  border:0;
+}
+
 /* ============================================================
    Typography & headings
    ============================================================ */
@@ -384,6 +394,51 @@ html[data-theme="light"] .theme-toggle .icon-moon{display:block}
   margin-bottom:16px;
 }
 .hero p.intro{font-size:1.05rem;max-width:560px;margin-bottom:30px}
+
+/* Hero rotating roles (typewriter) */
+.hero-rotator{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  min-height:2.5em;
+  max-width:640px;
+  margin-bottom:30px;
+  font-family:var(--font-heading);
+  font-size:clamp(1.02rem,2.5vw,1.4rem);
+  font-weight:600;
+  line-height:1.4;
+}
+.hero-rotator-mark{
+  flex:none;
+  width:5px;
+  align-self:stretch;
+  min-height:1.7em;
+  border-radius:999px;
+  background:var(--gradient);
+  box-shadow:var(--glow);
+}
+.hero-rotator-text{display:inline-flex;align-items:baseline;flex-wrap:wrap;gap:2px}
+.role-text{
+  background:var(--gradient);
+  background-size:220% auto;
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  animation:roleSheen 6s ease infinite;
+}
+@keyframes roleSheen{0%,100%{background-position:0% center}50%{background-position:100% center}}
+.role-cursor{
+  display:inline-block;
+  width:3px;
+  height:1.05em;
+  margin-left:3px;
+  border-radius:2px;
+  background:var(--primary);
+  transform:translateY(.12em);
+  animation:roleBlink 1s steps(1) infinite;
+}
+@keyframes roleBlink{0%,49%{opacity:1}50%,100%{opacity:0}}
+
 .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px}
 .hero-socials{display:flex;gap:12px;align-items:center}
 .hero-socials a{
@@ -505,6 +560,7 @@ html[data-theme="light"] .theme-toggle .icon-moon{display:block}
   .hero-grid{grid-template-columns:1fr;text-align:center;gap:44px}
   .hero .eyebrow::before,.section-head.center .eyebrow::before{display:none}
   .hero p.intro{margin-left:auto;margin-right:auto}
+  .hero-rotator{justify-content:center;margin-left:auto;margin-right:auto;min-height:3em}
   .hero-ctas,.hero-socials{justify-content:center}
   .hero-visual{order:-1}
   .hero-scroll{display:none}
@@ -577,8 +633,21 @@ html[data-theme="light"] .theme-toggle .icon-moon{display:block}
   transition:transform .3s ease;
 }
 .about-media:hover::before{transform:rotate(-1deg)}
+.about-photo{position:relative;margin-bottom:22px}
+.about-glow{
+  position:absolute;
+  inset:-44px;
+  z-index:0;
+  border-radius:50%;
+  background:radial-gradient(circle at 50% 42%,rgba(168,85,247,.34),transparent 62%);
+  filter:blur(4px);
+  animation:aboutGlowPulse 6s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes aboutGlowPulse{0%,100%{opacity:.65;transform:scale(.95)}50%{opacity:1;transform:scale(1.05)}}
 .about-frame{
   position:relative;
+  z-index:1;
   border-radius:24px;
   padding:10px;
   background:var(--gradient);
@@ -602,6 +671,41 @@ html[data-theme="light"] .theme-toggle .icon-moon{display:block}
   border:5px solid var(--bg);
   display:block;
 }
+.about-shine{
+  position:absolute;
+  inset:15px;
+  border-radius:20px;
+  background:linear-gradient(115deg,transparent 42%,rgba(255,255,255,.16) 50%,transparent 58%);
+  opacity:0;
+  transform:translateX(-35%);
+  transition:opacity .4s ease,transform .7s ease;
+  pointer-events:none;
+}
+.about-frame:hover .about-shine{opacity:1;transform:translateX(35%)}
+.about-float{
+  position:absolute;
+  z-index:2;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 15px;
+  border-radius:999px;
+  background:var(--card);
+  border:1px solid var(--border);
+  font-family:var(--font-heading);
+  font-size:.78rem;
+  font-weight:600;
+  color:var(--text);
+  box-shadow:var(--shadow);
+  white-space:nowrap;
+  animation:float 6s ease-in-out infinite;
+}
+.about-float svg{width:16px;height:16px;flex:none;color:var(--primary)}
+.about-float strong{color:var(--primary);font-weight:800}
+.about-float.f1{top:5%;left:-9%}
+.about-float.f2{bottom:26%;right:-10%;animation-delay:1.6s}
+.about-float.f3{bottom:-3%;left:-6%;animation-delay:3s}
+.about-strong{color:var(--text);font-weight:700}
 .about-copy{max-width:640px}
 .about-copy h2{margin-bottom:16px}
 .about-copy p{margin-bottom:14px}
@@ -616,9 +720,19 @@ html[data-theme="light"] .theme-toggle .icon-moon{display:block}
 }
 .about-tags{display:flex;flex-wrap:wrap;gap:10px}
 .about-media .about-tags{margin-top:22px;justify-content:center}
+.about-media .about-tags .chip{transition:border-color .2s ease,color .2s ease,transform .2s ease,box-shadow .2s ease}
+.about-media .about-tags .chip:hover{border-color:var(--primary);color:var(--primary);transform:translateY(-2px);box-shadow:var(--glow)}
 @media(max-width:900px){
   .about-grid{grid-template-columns:1fr;gap:56px}
-  .about-media{max-width:320px;margin:0 auto;justify-self:center}
+  .about-media{max-width:340px;margin:0 auto;justify-self:center}
+  .about-float.f1{left:-4%}
+  .about-float.f2{right:-4%}
+  .about-float.f3{left:-2%}
+}
+@media(max-width:560px){
+  .about-photo{margin-bottom:18px}
+  .about-float{font-size:.72rem;padding:8px 12px}
+  .about-float.f2,.about-float.f3{display:none}
 }
 
 /* ============================================================
