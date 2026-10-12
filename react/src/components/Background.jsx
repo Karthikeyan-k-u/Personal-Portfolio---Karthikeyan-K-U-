@@ -1,13 +1,13 @@
 import { useEffect, useRef } from "react";
 
-const MAX_TILT = 2.5; // degrees — subtle 3D camera rotation
-const Z_SCALE = 6; // converts a layer's depth into px of translateZ
+const MAX_TILT = 1.8; // degrees — subtle 3D camera rotation
+const Z_SCALE = 3; // converts a layer's depth into px of translateZ
 
 export default function Background() {
-  const fieldRef = useRef(null);
+  const tiltRef = useRef(null);
 
   useEffect(() => {
-    const field = fieldRef.current;
+    const field = tiltRef.current;
     if (!field) return;
 
     const layers = Array.from(field.querySelectorAll(".parallax"));
@@ -32,7 +32,7 @@ export default function Background() {
       cx += (tx - cx) * 0.06;
       cy += (ty - cy) * 0.06;
 
-      // Camera tilt: rotate the whole depth field.
+      // Camera tilt: rotate the whole depth field (anchored at the page top).
       field.style.transform =
         `rotateX(${(-cy * MAX_TILT).toFixed(2)}deg) ` +
         `rotateY(${(cx * MAX_TILT).toFixed(2)}deg)`;
@@ -59,18 +59,24 @@ export default function Background() {
   }, []);
 
   return (
-    <div className="bg-aurora" aria-hidden="true">
-      <div className="bg-field" ref={fieldRef}>
-        <div className="parallax nebula-wrap" data-depth="5">
-          <span className="bg-nebula-haze" />
-        </div>
-        <div className="parallax nebula-wrap" data-depth="14">
-          <span className="bg-nebula" />
+    <>
+      <div className="bg-aurora" aria-hidden="true">
+        <div className="bg-field">
+          <div className="bg-tilt" ref={tiltRef}>
+            <div className="parallax" data-depth="6">
+              <span className="nebula-glow" />
+            </div>
+            <div className="parallax" data-depth="10">
+              <span className="nebula-sharp" />
+            </div>
+          </div>
         </div>
       </div>
-      <span className="bg-scrim" />
-      <span className="bg-grain" />
-      <span className="bg-vignette" />
-    </div>
+      <div className="bg-overlay" aria-hidden="true">
+        <span className="bg-scrim" />
+        <span className="bg-grain" />
+        <span className="bg-vignette" />
+      </div>
+    </>
   );
 }

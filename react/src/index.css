@@ -54,6 +54,7 @@ body{
   color:var(--text);
   line-height:1.65;
   overflow-x:hidden;
+  position:relative;
   transition:background .35s ease,color .35s ease;
 }
 body::before{
@@ -67,45 +68,67 @@ body::before{
     radial-gradient(700px 500px at 60% 110%,rgba(217,70,239,.10),transparent 60%);
   pointer-events:none;
 }
-/* Nebula background — 3D camera depth field (components/Background.jsx) */
+/* Nebula background — scrolling 3D camera depth field (components/Background.jsx) */
 .bg-aurora{
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  overflow:hidden;
+  pointer-events:none;
+}
+.bg-field{
+  position:absolute;
+  inset:0;
+  perspective:1400px;
+}
+.bg-tilt{
+  position:absolute;
+  inset:0;
+  transform-style:preserve-3d;
+  transform-origin:50% 0;
+  will-change:transform;
+}
+.parallax{position:absolute;inset:0;transform-origin:50% 0;will-change:transform}
+
+/* Sharp nebula — anchored at the top of the page, fading out toward its base */
+.nebula-sharp{
+  position:absolute;
+  top:0;
+  left:-6%;
+  width:112%;
+  height:132vh;
+  display:block;
+  background:url("/hero-nebula.png") center top/cover no-repeat;
+  opacity:.72;
+  mix-blend-mode:screen;
+  -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 58%,transparent 100%);
+  mask-image:linear-gradient(to bottom,#000 0%,#000 58%,transparent 100%);
+}
+
+/* Blue glow — carries the nebula's colour down the whole page on scroll */
+.nebula-glow{
+  position:absolute;
+  top:54vh;
+  left:0;
+  right:0;
+  bottom:0;
+  display:block;
+  background:linear-gradient(180deg,
+    rgba(53,67,187,.34) 0%,
+    rgba(53,67,187,.13) 32%,
+    rgba(53,67,187,.05) 66%,
+    rgba(53,67,187,0) 100%);
+  mix-blend-mode:screen;
+}
+
+/* Viewport-framed overlays — kept fixed so they don't stretch over the page */
+.bg-overlay{
   position:fixed;
   inset:0;
   z-index:-1;
   overflow:hidden;
   pointer-events:none;
-  perspective:1200px;
 }
-.bg-field{
-  position:absolute;
-  inset:0;
-  transform-style:preserve-3d;
-  will-change:transform;
-}
-.parallax{position:absolute;inset:0;will-change:transform}
-.nebula-wrap{inset:-14%}
-
-.bg-nebula,
-.bg-nebula-haze{
-  position:absolute;
-  inset:0;
-  display:block;
-  background:url("/hero-nebula.png") center/cover no-repeat;
-}
-.bg-nebula{
-  opacity:.72;
-  mix-blend-mode:screen;
-  transform:scale(1.06);
-  transform-origin:50% 42%;
-}
-.bg-nebula-haze{
-  filter:blur(64px) saturate(1.35);
-  opacity:.5;
-  transform:scale(1.28);
-  transform-origin:50% 45%;
-}
-
-/* Readability scrim over the field, under grain/vignette */
 .bg-scrim{
   position:absolute;
   inset:0;
@@ -125,8 +148,8 @@ body::before{
   background:radial-gradient(circle at 50% 38%,transparent 30%,rgba(8,6,15,.66) 100%);
 }
 
-html[data-theme="light"] .bg-nebula{opacity:.34;mix-blend-mode:normal}
-html[data-theme="light"] .bg-nebula-haze{opacity:.26}
+html[data-theme="light"] .nebula-sharp{display:none}
+html[data-theme="light"] .nebula-glow{opacity:.45;mix-blend-mode:normal}
 html[data-theme="light"] .bg-scrim{background:linear-gradient(180deg,rgba(247,245,252,.4),rgba(247,245,252,.66))}
 html[data-theme="light"] .bg-grain{mix-blend-mode:multiply;opacity:.04}
 html[data-theme="light"] .bg-vignette{
@@ -134,7 +157,7 @@ html[data-theme="light"] .bg-vignette{
 }
 @media (prefers-reduced-motion:reduce){
   .stage-conic,.stage-glow,.hero-badge,.tech-badge{animation:none!important}
-  .bg-field,.parallax{transform:none!important}
+  .bg-tilt,.parallax{transform:none!important}
 }
 a{color:var(--primary);text-decoration:none}
 a:hover{color:var(--primary-strong)}
